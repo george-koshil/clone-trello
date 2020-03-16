@@ -7,7 +7,8 @@ function TaskList() {
         <div className='TaskList'>
             <TaskListTitle title='Todo list'/>
             <hr />
-            <Card text=' 1. First task'/>
+            <Card text='First task'/>
+            <Card text='Second task' />
         </div>
     )
 
