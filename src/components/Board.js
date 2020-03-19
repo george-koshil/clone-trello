@@ -4,11 +4,13 @@ import TodoAppBar from "./TodoAppBar";
 
 
 
-function Board() {
+function Board({lists}) {
     return (
       <div>
          <TodoAppBar />
-          <TaskList/>
+          {lists.map(list => (
+              <TaskList key={list.id} cards={list.cards}/>
+          ))}
       </div>
     );
 }
