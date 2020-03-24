@@ -4,10 +4,10 @@ import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
 
 
-function TaskList({cards}) {
+function TaskList({cards, title}) {
     return(
         <div className='TaskList'>
-            <TaskListTitle title='Today'/>
+            <TaskListTitle title={title}/>
             <hr />
             {cards.map(card => (
                 <Card text={card.text} key={card.id} />

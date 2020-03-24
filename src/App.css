@@ -5,6 +5,7 @@
 .TaskList {
    margin: 20px;
    width: 250px;
+   height: 100%;
    padding-bottom: 7px;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    background-color: rgb(202, 255, 222);
@@ -57,5 +58,10 @@ body {
    width: 236px;
    margin-left: 7px;
    margin-top: 8px;
+}
+
+.Board {
+   display: flex;
+
 }
 
