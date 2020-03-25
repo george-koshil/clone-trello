@@ -3,11 +3,13 @@ import Button from "@material-ui/core/Button";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import TextField from '@material-ui/core/TextField';
 import store from "../store/store";
+import CloseIcon from '@material-ui/icons/Close';
+import AddIcon from '@material-ui/icons/Add';
 
 
 function CardCreator({listId}) {
     let [onCardInput, setOnCardInput] = useState(false);
-    let [inputText, setInputText] = useState(null);
+    let [inputText, setInputText] = useState('');
     let [cardId, setCardId] = useState(0);
 
     const addCardAction = {
@@ -23,29 +25,40 @@ function CardCreator({listId}) {
     if(onCardInput) {
         return(
             <div className='CardCreator'>
-            <TextField
-                id="outlined-textarea"
-                label="Input text"
-                multiline
-                variant="outlined"
-                fullWidth={true}
-                autoFocus={true}
-                onChange={(e) => setInputText(e.target.value)}
-            />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<PlaylistAddIcon/>}
-                    fullWidth={true}
-                    onClick={() => {
-                        store.dispatch(addCardAction);
-                        setCardId(++cardId);
-                        setInputText('');
+                <div className='TextField'>
+                    <TextField
+                        id="outlined-textarea"
+                        value={inputText}
+                        multiline
+                        variant="outlined"
+                        fullWidth={true}
+                        size='small'
+                        autoFocus={true}
+
+                        onChange={(e) => setInputText(e.target.value)}
+                    />
+                </div>
+
+                <div className='AddCard'>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<AddIcon/>}
+                        onClick={() => {
+                            store.dispatch(addCardAction);
+                            setCardId(++cardId);
+                            setInputText('');
                         }
-                    }
-                >
-                    Add new card
-                </Button>
+                        }
+                    >
+                        Add new card
+                    </Button>
+                    <div onClick={()=> setOnCardInput(false)}>
+                        <CloseIcon className='CloseButton' />
+                    </div>
+
+                </div>
+
             </div>
 
         )
@@ -53,9 +66,8 @@ function CardCreator({listId}) {
     return(
         <div className='CardCreator'>
             <Button
-                variant="contained"
-                color="primary"
-                startIcon={<PlaylistAddIcon/>}
+                color="default"
+                startIcon={<AddIcon />}
                 fullWidth={true}
                 onClick={() => setOnCardInput(true)}
             >

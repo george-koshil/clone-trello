@@ -49,9 +49,24 @@ hr {
    opacity: 0.25;
 }
 
+.CloseButton {
+   padding: 2px;
+   margin-left: 3px;
+   margin-top: 3px;
+   cursor: pointer;
+}
+
+.AddCard {
+   display: flex;
+}
+
 
 body {
 
+}
+
+.TextField {
+   margin-bottom: 5px;
 }
 
 .CardCreator {
