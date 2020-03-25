@@ -5,9 +5,19 @@ import TextField from '@material-ui/core/TextField';
 import store from "../store/store";
 
 
-function CardCreator() {
+function CardCreator({listId}) {
     let [onCardInput, setOnCardInput] = useState(false);
     let [inputText, setInputText] = useState(null);
+    let [cardId, setCardId] = useState(0);
+
+    const addCardAction = {
+        type: 'ADD NEW CARD',
+        id: listId,
+        card: {
+            id: `card-${listId}.${cardId}`,
+            text: inputText,
+        }
+    };
 
 
     if(onCardInput) {
@@ -27,7 +37,12 @@ function CardCreator() {
                     color="primary"
                     startIcon={<PlaylistAddIcon/>}
                     fullWidth={true}
-                    onClick={() => store.dispatch({type: 'ADD NEW CARD', id: '0', card: {id: 0, text: inputText}})}
+                    onClick={() => {
+                        store.dispatch(addCardAction);
+                        setCardId(++cardId);
+                        setInputText('');
+                        }
+                    }
                 >
                     Add new card
                 </Button>

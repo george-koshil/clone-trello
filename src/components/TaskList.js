@@ -21,7 +21,7 @@ function TaskList({cards, title,id}) {
                     </div>)}
             </Droppable>
 
-            <CardCreator/>
+            <CardCreator listId={id}/>
         </div>
     )
 
