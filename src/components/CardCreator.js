@@ -27,7 +27,7 @@ function CardCreator() {
                     color="primary"
                     startIcon={<PlaylistAddIcon/>}
                     fullWidth={true}
-                    onClick={() => store.dispatch({type: 'ADD NEW CARD', id: 0, card: {id: 0, text: inputText}})}
+                    onClick={() => store.dispatch({type: 'ADD NEW CARD', id: '0', card: {id: 0, text: inputText}})}
                 >
                     Add new card
                 </Button>

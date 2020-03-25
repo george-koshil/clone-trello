@@ -1,40 +1,40 @@
 const initialState = [
     {
     title: 'Today',
-    id: 0,
+    id: '0',
     cards: [
         {
-            id: 0,
+            id: 'card-1',
             text: 'Kiss Alina'
         },
         {
-            id: 1,
+            id: 'card-2',
             text: 'Huge Alina'
         },
         {
-            id: 2,
+            id: 'card-3',
             text: 'Watch interesting film'
         },
     ]
 },
     {
         title: 'Yesterday',
-        id: 1,
+        id: '1',
         cards: [
             {
-                id: 0,
+                id: 'card-6',
                 text: 'Training leg'
             },
             {
-                id: 1,
-                text: 'runing'
+                id: 'card-7',
+                text: 'running'
             },
             {
-                id: 2,
+                id: 'card-9',
                 text: 'new move of dance'
             },
             {
-                id:3,
+                id:'card-77',
                 text: 'call maxim'
             }
         ]
@@ -51,7 +51,16 @@ export default function ListReducer(state = initialState, action) {
                     }
                     return list
                 })
-            ]
+            ];
+        case 'DRAG CARD':
+            return [
+                ...state.map(list => {
+                    if(list.id === action.id) {
+                        list.cards = action.cards;
+                    }
+                    return list
+                })
+            ];
         default:
             return state;
     }
