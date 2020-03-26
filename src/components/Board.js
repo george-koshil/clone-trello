@@ -1,8 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import TaskList from "./TaskList";
 import TodoAppBar from "./TodoAppBar";
 import { DragDropContext}  from "react-beautiful-dnd";
 import store from "../store/store";
+import AddListButton from "./AddListButton";
 
 function Board({lists}) {
     const onDragEnd = rezult => {
@@ -35,21 +36,26 @@ function Board({lists}) {
     }
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div>
-                <TodoAppBar />
-                <div className='Board'>
-                    {lists.map((list, index) => (
-                        <TaskList key={list.id} cards={list.cards} title={list.title} id={index.toString()}/>
-                    ))}
+        <div>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div>
+                    <TodoAppBar/>
+                    <div className='Board'>
+                        {lists.map((list, index) => (
+                            <TaskList key={list.id} cards={list.cards} title={list.title} id={index.toString()}/>
+                        ))}
+
+                        <AddListButton/>
+                    </div>
                 </div>
-            </div>
-        </DragDropContext>
+            </DragDropContext>
+
+        </div>
 
     )
 }
 
-export default Board
+export default memo(Board)
 
 
 

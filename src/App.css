@@ -75,8 +75,19 @@ body {
    margin-top: 8px;
 }
 
+.AddList {
+   background-color: rgb(202, 255, 222);
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   padding: 5px;
+   height: 100%;
+   width: 236px;
+   margin-left: 7px;
+   margin-top: 20px;
+}
 .Board {
    display: flex;
-
 }
 
+.AddListButton {
+   margin-top: 20px;
+}

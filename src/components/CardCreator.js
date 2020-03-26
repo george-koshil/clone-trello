@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Button from "@material-ui/core/Button";
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import TextField from '@material-ui/core/TextField';
 import store from "../store/store";
 import CloseIcon from '@material-ui/icons/Close';
@@ -43,6 +42,7 @@ function CardCreator({listId}) {
                     <Button
                         variant="contained"
                         color="primary"
+                        size='small'
                         startIcon={<AddIcon/>}
                         onClick={() => {
                             store.dispatch(addCardAction);
@@ -51,7 +51,7 @@ function CardCreator({listId}) {
                         }
                         }
                     >
-                        Add new card
+                        Добавить карточку
                     </Button>
                     <div onClick={()=> setOnCardInput(false)}>
                         <CloseIcon className='CloseButton' />
@@ -66,12 +66,13 @@ function CardCreator({listId}) {
     return(
         <div className='CardCreator'>
             <Button
-                color="default"
+                variant='contained'
+                size='medium'
                 startIcon={<AddIcon />}
                 fullWidth={true}
                 onClick={() => setOnCardInput(true)}
             >
-                    Add new card
+                    Добавить карточку
                 </Button>
 
 

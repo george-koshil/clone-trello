@@ -4,15 +4,10 @@ import Board from "./components/Board";
 import {connect} from "react-redux";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.lists = this.props.lists;
-    }
-
   render() {
     return (
         <div className='App-page'>
-            <Board lists={this.lists}/>
+            <Board lists={this.props.lists}/>
         </div>
     );
   }
