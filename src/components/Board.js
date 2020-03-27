@@ -1,9 +1,9 @@
-import React, {memo} from "react";
 import TaskList from "./TaskList";
 import TodoAppBar from "./TodoAppBar";
 import { DragDropContext}  from "react-beautiful-dnd";
 import store from "../store/store";
 import AddListButton from "./AddListButton";
+import React from "react";
 
 function Board({lists}) {
     const onDragEnd = rezult => {
@@ -55,7 +55,7 @@ function Board({lists}) {
     )
 }
 
-export default memo(Board)
+export default Board
 
 
 
