@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
 import store from "../store/store";
 import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
 
 
 function BoardCreator() {
@@ -11,30 +12,43 @@ function BoardCreator() {
 
     if(onBoardCreator) {
         return(
-          <div className='formBoardCreator'>
-              <TextField
-                  id="outlined-textarea"
-                  value={boardName}
-                  multiline
-                  variant="outlined"
-                  fullWidth={true}
-                  size='large'
-                  autoFocus={true}
-                  onChange={(e) => setBoardName(e.target.value)}
-              />
+          <div className='FormBoardCreator'>
+              <div className='FormBoardTitle'>Создание доски</div>
 
-              <Button
-                  variant="contained"
-                  color="primary"
-                  size='small'
-                  startIcon={<AddIcon/>}
-                  onClick={() => {
-                      setBoardName('');
-                    }
-                  }
-              >
-                  Создать доску
-              </Button>
+              <div className='BoardCreatorTextField'>
+                  <TextField
+                      id="outlined-textarea"
+                      value={boardName}
+                      multiline
+                      variant="outlined"
+                      fullWidth={true}
+                      size='medium'
+                      autoFocus={true}
+                      onChange={(e) => setBoardName(e.target.value)}
+                  />
+              </div>
+
+              <div className='BoardCreatorButton'>
+                  <Button
+                      variant="contained"
+                      color="primary"
+                  >
+                      Добавить
+                  </Button>
+              </div>
+
+              <div className='BoardCreatorButtonClose'>
+                  <Button
+                      variant="contained"
+                      color="primary"
+                  >
+                      Отменить
+                  </Button>
+              </div>
+
+
+
+
           </div>
         );
     }

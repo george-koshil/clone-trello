@@ -115,6 +115,49 @@ body {
    color: white;
 }
 
+.BoardCreatorTextField {
+   position: absolute;
+   top: 52px;
+   left: 23px;
+   background-color: white;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   border-radius: 5px;
+}
+
+.BoardCreatorButton {
+   position: absolute;
+   bottom: 20px;
+   right: 22px;
+}
+
+.BoardCreatorButtonClose {
+   position: absolute;
+   bottom: 20px;
+   left: 22px;
+}
+
+.FormBoardCreator {
+   width: 270px;
+   height: 180px;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   background-color: #9fe7a4;
+   margin-top: 30px;
+   margin-left: 30px;
+   position: relative;
+}
+
+
+.FormBoardTitle {
+   position: absolute;
+   width: 230px;
+   font-size: 19px;
+   top: 15px;
+   left: 65px;
+   font-weight: bold;
+   font-family: 'Roboto', sans-serif;
+   color: white;
+}
+
 .AddListButton {
    margin-top: 20px;
 }
