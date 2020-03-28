@@ -136,6 +136,18 @@ body {
    left: 22px;
 }
 
+.BoardTile {
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   background-color: #9fe7a4;
+   margin-top: 30px;
+   margin-left: 30px;
+   width: 200px;
+   height: 120px;
+   position: relative;
+   cursor: pointer;
+   transition: 400ms;
+}
+
 .FormBoardCreator {
    width: 270px;
    height: 180px;

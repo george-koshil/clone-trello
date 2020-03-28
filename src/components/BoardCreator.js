@@ -9,7 +9,7 @@ function BoardCreator({boards}) {
     let [onBoardCreator, setOnBoardCreator] = useState(false);
     let [boardName, setBoardName] = useState('');
 
-    
+
     if(onBoardCreator) {
         return(
           <div className='FormBoardCreator'>
@@ -46,10 +46,6 @@ function BoardCreator({boards}) {
                       Отменить
                   </Button>
               </div>
-
-
-
-
           </div>
         );
     }
