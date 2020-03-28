@@ -11,14 +11,15 @@ class App extends Component {
     return (
         <div className='App-page'>
             <TodoAppBar/>
-            <BoardCreator boards={this.props.boards}/>
-            <div>
-                {this.props.boards.map(board => {
-                    return(
-                        <BoardTile key={board.id} title={board.title} />
-                    )
-                })}
-            </div>
+                <BoardCreator boards={this.props.boards}/>
+                <div className='BoardTileBar'>
+                    {this.props.boards.map(board => {
+                        return(
+                            <BoardTile key={board.id} title={board.title} />
+                        )
+                    })}
+                </div>
+
         </div>
     );
   }
