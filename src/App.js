@@ -9,15 +9,14 @@ class App extends Component {
   render() {
     return (
         <div className='App-page'>
-            <TodoAppBar/>
-           <BoardCreator/>
+            <BoardCreator boards={this.props.boards}/>
         </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    lists: state.lists
+    boards: state.boards
 });
 
 export default connect(mapStateToProps)(App);

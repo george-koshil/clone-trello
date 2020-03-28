@@ -2,14 +2,14 @@ import React,{useState} from "react";
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
 import store from "../store/store";
-import AddIcon from "@material-ui/icons/Add";
-import CloseIcon from "@material-ui/icons/Close";
 
 
-function BoardCreator() {
+
+function BoardCreator({boards}) {
     let [onBoardCreator, setOnBoardCreator] = useState(false);
     let [boardName, setBoardName] = useState('');
 
+    
     if(onBoardCreator) {
         return(
           <div className='FormBoardCreator'>
@@ -41,6 +41,7 @@ function BoardCreator() {
                   <Button
                       variant="contained"
                       color="primary"
+                      onClick={() => setOnBoardCreator(false)}
                   >
                       Отменить
                   </Button>
