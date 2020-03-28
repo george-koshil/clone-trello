@@ -6,16 +6,17 @@ import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 
 
-function CardCreator({listId}) {
+function CardCreator({listId, boardID}) {
     let [onCardInput, setOnCardInput] = useState(false);
     let [inputText, setInputText] = useState('');
     let [cardId, setCardId] = useState(0);
 
     const addCardAction = {
         type: 'ADD NEW CARD',
-        id: listId,
+        listID: listId,
+        boardID:boardID,
         card: {
-            id: `card-${listId}.${cardId}`,
+            id: `card-${listId}.${cardId}${boardID}`,
             text: inputText,
         }
     };

@@ -5,7 +5,7 @@ import store from "../store/store";
 import AddListButton from "./AddListButton";
 import React from "react";
 
-function Board({lists}) {
+function Board({board}) {
     const onDragEnd = rezult => {
         const {source, destination} = rezult;
 
@@ -18,20 +18,20 @@ function Board({lists}) {
             return;
         }
 
-        let sourceList = [...store.getState().lists[Number.parseInt(source.droppableId)].cards];
-        let destinationList = [...store.getState().lists[Number.parseInt(destination.droppableId)].cards];
-        let card = store.getState().lists[Number.parseInt(source.droppableId)].cards[source.index];
+        let sourceList = [...store.getState().boards[board.id].lists[Number.parseInt(source.droppableId)].cards];
+        let destinationList = [...store.getState().boards[board.id].lists[Number.parseInt(destination.droppableId)].cards];
+        let card = store.getState().boards[board.id].lists[Number.parseInt(source.droppableId)].cards[source.index];
 
         if(source.droppableId === destination.droppableId) {
             sourceList.splice(source.index, 1);
             sourceList.splice(destination.index, 0, card);
-            store.dispatch({type:'DRAG CARD', id:source.droppableId, cards:sourceList});
+            store.dispatch({type:'DRAG CARD', boardID: board.id, listID:source.droppableId, cards:sourceList});
         }
         else {
             sourceList.splice(source.index, 1);
             destinationList.splice(destination.index, 0, card);
-            store.dispatch({type:'DRAG CARD', id:source.droppableId, cards:sourceList});
-            store.dispatch({type:'DRAG CARD', id:destination.droppableId, cards:destinationList});
+            store.dispatch({type:'DRAG CARD', listID:source.droppableId, boardID: board.id, cards:sourceList});
+            store.dispatch({type:'DRAG CARD', listID:destination.droppableId, boardID: board.id, cards:destinationList});
         }
     }
 
@@ -41,11 +41,11 @@ function Board({lists}) {
                 <div>
                     <TodoAppBar/>
                     <div className='Board'>
-                        {lists.map((list, index) => (
-                            <TaskList key={list.id} cards={list.cards} title={list.title} id={index.toString()}/>
+                        {board.lists.map((list, index) => (
+                            <TaskList key={list.id} cards={list.cards} title={list.title} boardID={board.id} id={index.toString()}/>
                         ))}
 
-                        <AddListButton/>
+                        <AddListButton boardID={board.id}/>
                     </div>
                 </div>
             </DragDropContext>

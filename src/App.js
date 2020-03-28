@@ -20,7 +20,7 @@ class App extends Component {
                     {this.props.boards.map(board => {
                         return(
                             <Route key={'route' + board.id} path={'/' + board.id.toString()}>
-                                <Board key={'board' + board.id} lists={board.lists} />
+                                <Board key={'board' + board.id} board={board} />
                             </Route>
                             )
 

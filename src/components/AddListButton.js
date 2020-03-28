@@ -7,12 +7,13 @@ import CloseIcon from "@material-ui/icons/Close";
 
 store.subscribe(() => console.log(store.getState()))
 
-export default function AddListButton() {
+export default function AddListButton({boardID}) {
     const [onAddList, setOnAddList] = useState(false);
     const [inputText, setInputText] = useState('');
 
     const addListAction = {
         type: 'ADD NEW LIST',
+        boardID: boardID,
         list: {
             title: inputText,
             id: store.getState().boards[0].lists.length.toString(),

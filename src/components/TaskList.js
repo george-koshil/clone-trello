@@ -5,7 +5,7 @@ import CardCreator from "./CardCreator";
 import { Droppable } from 'react-beautiful-dnd'
 
 
-function TaskList({cards, title,id}) {
+function TaskList({cards, title,id, boardID}) {
     return(
         <div className='TaskList'>
             <TaskListTitle title={title}/>
@@ -21,7 +21,7 @@ function TaskList({cards, title,id}) {
                     </div>)}
             </Droppable>
 
-            <CardCreator listId={id}/>
+            <CardCreator boardID={boardID} listId={id}/>
         </div>
     )
 

@@ -50,23 +50,36 @@ const initialState = [
 export default function ListReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD NEW CARD':
-            return state.map(list => {
-                    if(list.id === action.id) {
-                        let newCards = [...list.cards];
-                        newCards.push(action.card);
-                        return {...list, cards: newCards}
-                    }
-                    return list
-                });
+            return [...state.map(board => {
+                if(board.id === action.boardID) {
+                    return {...board, lists: [...board.lists.map(list => {
+                        if(list.id === action.listID) {
+                            return {...list, cards: [...list.cards, action.card]}
+                        }
+                        return list
+                        })]}
+                }
+                return board
+            })];
         case 'DRAG CARD':
-            return state.map(list => {
-                    if(list.id === action.id) {
-                        return {...list, cards: action.cards}
-                    }
-                    return list
-                });
+            return [...state.map(board => {
+                if(board.id === action.boardID) {
+                    return {...board, lists: [...board.lists.map(list => {
+                            if(list.id === action.listID) {
+                                return {...list, cards: action.cards}
+                            }
+                            return list
+                        })] }
+                }
+                return board
+            })];
         case 'ADD NEW LIST':
-            return [...state, action.list];
+            return [...state.map(board => {
+                if(board.id === action.boardID) {
+                    return {...board, lists: [...board.lists, action.list]}
+                }
+                return board
+            })];
         case 'ADD BOARD':
             return [...state, action.board];
         default:
