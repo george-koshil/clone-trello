@@ -15,7 +15,7 @@ export default function AddListButton() {
         type: 'ADD NEW LIST',
         list: {
             title: inputText,
-            id: store.getState().lists.length.toString(),
+            id: store.getState().boards[0].lists.length.toString(),
             cards:[]
         }
     }
