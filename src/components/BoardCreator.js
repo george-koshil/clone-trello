@@ -9,6 +9,15 @@ function BoardCreator({boards}) {
     let [onBoardCreator, setOnBoardCreator] = useState(false);
     let [boardName, setBoardName] = useState('');
 
+    const addBoardAction = {
+        type: 'ADD BOARD',
+        board: {
+            id: store.getState().boards.length,
+            title: boardName,
+            lists: []
+        }
+    };
+
 
     if(onBoardCreator) {
         return(
@@ -32,6 +41,7 @@ function BoardCreator({boards}) {
                   <Button
                       variant="contained"
                       color="primary"
+                      onClick={() => store.dispatch(addBoardAction)}
                   >
                       Добавить
                   </Button>

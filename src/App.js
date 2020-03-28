@@ -16,7 +16,7 @@ class App extends Component {
             <div>
                 {this.props.boards.map(board => {
                     return(
-                        <BoardTile title={board.title} />
+                        <BoardTile key={board.id} title={board.title} />
                     )
                 })}
             </div>

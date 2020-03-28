@@ -64,10 +64,11 @@ export default function ListReducer(state = initialState, action) {
                         return {...list, cards: action.cards}
                     }
                     return list
-                })
-
+                });
         case 'ADD NEW LIST':
             return [...state, action.list];
+        case 'ADD BOARD':
+            return [...state, action.board];
         default:
             return state;
     }
