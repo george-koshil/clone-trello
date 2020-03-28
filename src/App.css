@@ -148,6 +148,17 @@ body {
    transition: 400ms;
 }
 
+.BoardTileTitle {
+   width: 130px;
+   height: 100%;
+   position: absolute;
+   top: 48px;
+   left: 45px;
+   font-weight: bold;
+   font-family: 'Roboto', sans-serif;
+   color: white;
+}
+
 .FormBoardCreator {
    width: 270px;
    height: 180px;

@@ -41,7 +41,12 @@ function BoardCreator({boards}) {
                   <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => store.dispatch(addBoardAction)}
+                      onClick={() => {
+                          store.dispatch(addBoardAction)
+                          setBoardName('');
+                          setOnBoardCreator(false);
+                      }
+                      }
                   >
                       Добавить
                   </Button>

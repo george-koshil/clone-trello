@@ -2,7 +2,11 @@ import React from "react";
 
 function BoardTile({title}) {
     return(
-        <div className='BoardTile'>{title}</div>
+        <div className='BoardTile'>
+            <div className='BoardTileTitle'>
+                {title}
+            </div>
+        </div>
     )
 }
 

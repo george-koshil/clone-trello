@@ -12,7 +12,6 @@ class App extends Component {
         <div className='App-page'>
             <TodoAppBar/>
             <BoardCreator boards={this.props.boards}/>
-
             <div>
                 {this.props.boards.map(board => {
                     return(
