@@ -10,16 +10,17 @@ store.subscribe(() => console.log(store.getState()))
 export default function AddListButton({boardID}) {
     const [onAddList, setOnAddList] = useState(false);
     const [inputText, setInputText] = useState('');
+    console.log(boardID)
 
     const addListAction = {
         type: 'ADD NEW LIST',
         boardID: boardID,
         list: {
             title: inputText,
-            id: store.getState().boards[0].lists.length.toString(),
+            id: store.getState().boards[boardID].lists.length.toString(),
             cards:[]
         }
-    }
+    };
 
     if(onAddList) {
         return(
@@ -33,7 +34,6 @@ export default function AddListButton({boardID}) {
                         fullWidth={true}
                         size='small'
                         autoFocus={true}
-
                         onChange={(e) => setInputText(e.target.value)}
                     />
                 </div>

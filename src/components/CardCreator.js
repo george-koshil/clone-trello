@@ -67,7 +67,6 @@ function CardCreator({listId, boardID}) {
     return(
         <div className='CardCreator'>
             <Button
-                variant='contained'
                 size='medium'
                 startIcon={<AddIcon />}
                 fullWidth={true}
@@ -75,8 +74,6 @@ function CardCreator({listId, boardID}) {
             >
                     Добавить карточку
                 </Button>
-
-
 
         </div>
     );
