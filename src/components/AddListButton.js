@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
-import store from "../store/store";
+import store from "../store";
 import CloseIcon from "@material-ui/icons/Close";
 
 store.subscribe(() => console.log(store.getState()))
@@ -10,7 +10,7 @@ store.subscribe(() => console.log(store.getState()))
 export default function AddListButton({boardID}) {
     const [onAddList, setOnAddList] = useState(false);
     const [inputText, setInputText] = useState('');
-    console.log(boardID)
+    console.log(boardID);
 
     const addListAction = {
         type: 'ADD NEW LIST',

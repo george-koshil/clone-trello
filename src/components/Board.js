@@ -1,7 +1,7 @@
 import TaskList from "./TaskList";
 import TodoAppBar from "./TodoAppBar";
 import { DragDropContext}  from "react-beautiful-dnd";
-import store from "../store/store";
+import store from "../store";
 import AddListButton from "./AddListButton";
 import React from "react";
 
