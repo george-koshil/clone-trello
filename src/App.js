@@ -14,6 +14,7 @@ import {
 
 class App extends Component {
   render() {
+      console.log(this.props);
     return (
         <Router>
                 <Switch>
@@ -48,7 +49,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-    boards: state.boards
+    boards: state.board,
+    lists: state.list
 });
 
 export default connect(mapStateToProps)(App);

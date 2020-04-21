@@ -5,12 +5,11 @@ import TextField from "@material-ui/core/TextField";
 import store from "../store";
 import CloseIcon from "@material-ui/icons/Close";
 
-store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => console.log(store.getState()));
 
 export default function AddListButton({boardID}) {
     const [onAddList, setOnAddList] = useState(false);
     const [inputText, setInputText] = useState('');
-    console.log(boardID);
 
     const addListAction = {
         type: 'ADD NEW LIST',

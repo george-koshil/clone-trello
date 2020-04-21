@@ -12,7 +12,7 @@ function BoardCreator({boards}) {
     const addBoardAction = {
         type: 'ADD BOARD',
         board: {
-            id: store.getState().boards.length,
+            id: 23,
             title: boardName,
             lists: []
         }
