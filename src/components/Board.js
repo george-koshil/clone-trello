@@ -42,7 +42,7 @@ function Board({board}) {
                     <TodoAppBar/>
                     <div className='Board'>
                         {board.lists.map((list, index) => (
-                            <TaskList key={list.id} cards={list.cards} title={list.title} boardID={board.id} id={index.toString()}/>
+                            <TaskList key={list.id} cards={list.cards} title={list.title} boardId={board.id} id={index.toString()}/>
                         ))}
 
                         <AddListButton boardID={board.id}/>

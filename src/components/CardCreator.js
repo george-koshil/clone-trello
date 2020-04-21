@@ -4,23 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import store from "../store";
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
+import {addCard} from "../actions";
 
 
-function CardCreator({listId, boardID}) {
+function CardCreator({listId, boardId}) {
     let [onCardInput, setOnCardInput] = useState(false);
-    let [inputText, setInputText] = useState('');
-    let [cardId, setCardId] = useState(0);
-
-    const addCardAction = {
-        type: 'ADD NEW CARD',
-        listID: listId,
-        boardID:boardID,
-        card: {
-            id: `card-${listId}.${cardId}${boardID}`,
-            text: inputText,
-        }
-    };
-
+    let [cardName, setCardName] = useState('');
 
     if(onCardInput) {
         return(
@@ -28,14 +17,13 @@ function CardCreator({listId, boardID}) {
                 <div className='TextField'>
                     <TextField
                         id="outlined-textarea"
-                        value={inputText}
+                        value={cardName}
                         multiline
                         variant="outlined"
                         fullWidth={true}
                         size='small'
                         autoFocus={true}
-
-                        onChange={(e) => setInputText(e.target.value)}
+                        onChange={(e) => setCardName(e.target.value)}
                     />
                 </div>
 
@@ -46,9 +34,8 @@ function CardCreator({listId, boardID}) {
                         size='small'
                         startIcon={<AddIcon/>}
                         onClick={() => {
-                            store.dispatch(addCardAction);
-                            setCardId(++cardId);
-                            setInputText('');
+                            store.dispatch(addCard(cardName,listId,boardId));
+                            setCardName('');
                         }
                         }
                     >
