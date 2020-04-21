@@ -40,10 +40,10 @@ export function addLists(lists, boardId) {
     }
 }
 
-export function addCard(card, listId, boardId) {
+export function addCard(cardName, listId, boardId) {
     return {
         type: ADD_CARD,
-        card,
+        cardName,
         listId,
         boardId
     }
