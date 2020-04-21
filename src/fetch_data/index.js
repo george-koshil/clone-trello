@@ -1,3 +1,9 @@
+import {
+    AUTH,
+    API_BASE_URL,
+    API_VERSION
+} from "../constants";
+
 const sendRequest = (path, init) => {
     let url = `${API_BASE_URL}/${API_VERSION}${path}`;
 
@@ -30,7 +36,7 @@ const transformToQueryString = params =>
         .join('&');
 
 
-function getBoards() {
+export function getBoards() {
     sendRequest(`/members/me/boards`)
         .then(boards => {
             boards.forEach(board => store.push(board));
