@@ -4,22 +4,11 @@ import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import store from "../store";
 import CloseIcon from "@material-ui/icons/Close";
+import {addList} from "../actions";
 
-store.subscribe(() => console.log(store.getState()));
-
-export default function AddListButton({boardID}) {
+export default function AddListButton({boardId}) {
     const [onAddList, setOnAddList] = useState(false);
-    const [inputText, setInputText] = useState('');
-
-    const addListAction = {
-        type: 'ADD NEW LIST',
-        boardID: boardID,
-        list: {
-            title: inputText,
-            id: store.getState().boards[boardID].lists.length.toString(),
-            cards:[]
-        }
-    };
+    const [listName, setListName] = useState('');
 
     if(onAddList) {
         return(
@@ -27,13 +16,13 @@ export default function AddListButton({boardID}) {
                 <div className='TextField'>
                     <TextField
                         id="outlined-textarea"
-                        value={inputText}
+                        value={listName}
                         multiline
                         variant="outlined"
                         fullWidth={true}
                         size='small'
                         autoFocus={true}
-                        onChange={(e) => setInputText(e.target.value)}
+                        onChange={(e) => setListName(e.target.value)}
                     />
                 </div>
 
@@ -44,9 +33,9 @@ export default function AddListButton({boardID}) {
                         size='small'
                         startIcon={<AddIcon/>}
                         onClick={() => {
-                            store.dispatch(addListAction);
+                            store.dispatch(addList(listName, boardId));
                             setOnAddList(false);
-                            setInputText('');
+                            setListName('');
                         }
                         }
                     >

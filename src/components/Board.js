@@ -45,7 +45,7 @@ function Board({board}) {
                             <TaskList key={list.id} cards={list.cards} title={list.title} boardId={board.id} id={index.toString()}/>
                         ))}
 
-                        <AddListButton boardID={board.id}/>
+                        <AddListButton boardId={board.id}/>
                     </div>
                 </div>
             </DragDropContext>
