@@ -9,10 +9,10 @@ import {
 } from "../constants";
 
 
-export function addBoard(board) {
+export function addBoard(boardName) {
     return {
         type: ADD_BOARD,
-        board
+        boardName
     }
 }
 
@@ -23,10 +23,10 @@ export function addBoards(boards) {
     }
 }
 
-export function addList(list, boardId) {
+export function addList(listName, boardId) {
     return {
         type: ADD_LIST,
-        list,
+        listName,
         boardId
 
     }

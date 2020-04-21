@@ -2,22 +2,12 @@ import React,{useState} from "react";
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
 import store from "../store";
-
+import {addBoard} from "../actions";
 
 
 function BoardCreator({boards}) {
     let [onBoardCreator, setOnBoardCreator] = useState(false);
     let [boardName, setBoardName] = useState('');
-
-    const addBoardAction = {
-        type: 'ADD BOARD',
-        board: {
-            id: 23,
-            title: boardName,
-            lists: []
-        }
-    };
-
 
     if(onBoardCreator) {
         return(
@@ -42,7 +32,7 @@ function BoardCreator({boards}) {
                       variant="contained"
                       color="primary"
                       onClick={() => {
-                          store.dispatch(addBoardAction)
+                          store.dispatch(addBoard(boardName));
                           setBoardName('');
                           setOnBoardCreator(false);
                       }
