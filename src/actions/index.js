@@ -8,7 +8,6 @@ import {
     DRAG_CARD
 } from "../constants";
 
-
 export function addBoard(boardName) {
     return {
         type: ADD_BOARD,

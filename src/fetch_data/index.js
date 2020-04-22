@@ -1,12 +1,11 @@
-import {
-    AUTH,
-    API_BASE_URL,
-    API_VERSION
-} from "../constants";
+import {addBoards} from "../actions";
+import {API_BASE_URL, API_VERSION, AUTH} from "../constants";
+import * as constants from "../constants"
+
 
 const sendRequest = (path, init) => {
     let url = `${API_BASE_URL}/${API_VERSION}${path}`;
-
+    console.log(constants.AUTH);
     if (init) {
         const { params } = init;
         if (params) {
@@ -36,35 +35,10 @@ const transformToQueryString = params =>
         .join('&');
 
 
-export function getBoards() {
+export function getBoards(dispatch) {
     sendRequest(`/members/me/boards`)
         .then(boards => {
-            boards.forEach(board => store.push(board));
+            dispatch(addBoards(boards));
         })
 }
 
-
-function getCards() {
-    return new Promise(resolve => {
-        let cardsPromises = [],
-            count = 0;
-
-        store.forEach(board => {
-            board.lists.forEach(list => {
-                cardsPromises.push(sendRequest(`/lists/${list.id}/cards`));
-            })
-        });
-
-        Promise.all(cardsPromises)
-            .then(cards => {
-                store.forEach(board => {
-                    board.lists.forEach(list => {
-                        list.cards = cards[count++];
-                    })
-                });
-
-                resolve('done');
-            })
-
-    })
-}

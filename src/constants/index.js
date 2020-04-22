@@ -1,24 +1,27 @@
-import {TOKEN} from "../token";
+const TOKEN = '13bf9be2e2841edb8edff97d36c92c886e0ac6c45698ae23d5af86102b92dd0c';
 
-export const ADD_BOARD = 'ADD BOARD';
+const ADD_BOARD = 'ADD BOARD';
 
-export const ADD_BOARDS = 'ADD BOARDS';
+const ADD_BOARDS = 'ADD BOARDS';
 
-export const ADD_LIST = 'ADD LIST';
+const ADD_LIST = 'ADD LIST';
 
-export const ADD_LISTS = 'ADD LISTS';
+const ADD_LISTS = 'ADD LISTS';
 
-export const ADD_CARD = 'ADD CARDS';
+const ADD_CARD = 'ADD CARDS';
 
-export const ADD_CARDS = 'ADD CARDS';
+const ADD_CARDS = 'ADD CARDS';
 
-export const DRAG_CARD = 'DRAG CARD';
+const DRAG_CARD = 'DRAG CARD';
 
-export const API_KEY = 'b844759cfed852eb9d066308f02dbcd9';
+const API_BASE_URL = 'https://api.trello.com';
 
-export const AUTH = `key=${API_KEY}&token=${TOKEN}`;
+const API_VERSION = '1';
 
-export const API_BASE_URL = 'https://api.trello.com';
+const API_KEY = 'b844759cfed852eb9d066308f02dbcd9';
 
-export const API_VERSION = '1';
+const AUTH = `key=${API_KEY}&token=${TOKEN}`;
+
+export {ADD_BOARD, ADD_BOARDS, ADD_LISTS, ADD_CARDS, ADD_CARD, DRAG_CARD, API_BASE_URL, AUTH, API_VERSION, ADD_LIST}
+
 

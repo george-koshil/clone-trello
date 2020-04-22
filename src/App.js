@@ -5,16 +5,24 @@ import {connect} from "react-redux";
 import BoardCreator from "./components/BoardCreator";
 import TodoAppBar from "./components/TodoAppBar";
 import BoardTile from "./components/BoardTile";
+import {getBoards} from "./fetch_data";
 import {
     BrowserRouter as Router,
         Switch,
         Route,
         Link
 } from "react-router-dom";
+import store from "./store";
+
 
 class App extends Component {
-  render() {
-      console.log(this.props);
+    componentDidMount() {
+        const { dispatch } = this.props;
+        getBoards(dispatch);
+        console.log(this.props, store.getState());
+    }
+
+    render() {
     return (
         <Router>
                 <Switch>
