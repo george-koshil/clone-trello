@@ -38,7 +38,7 @@ class App extends Component {
                 <Route exact path='/'>
                     <div className='App-page'>
                         <TodoAppBar/>
-                        <BoardCreator boards={this.props.boards}/>
+                        <BoardCreator boards={this.props.boards.items}/>
                         <div className='BoardTileBar'>
                             {this.props.boards.items.map(board => {
                                 return(

@@ -6,7 +6,8 @@ import {
     ADD_LIST,
     ADD_LISTS,
     DRAG_CARD,
-    FETCH_BOARDS
+    FETCH_BOARDS,
+    FETCH_LISTS
 } from "../constants";
 
 export function addBoard(boardName) {
@@ -45,8 +46,16 @@ export function addList(listName, boardId) {
 export function addLists(lists, boardId) {
     return {
         type: ADD_LISTS,
+        isFetching: false,
         lists,
         boardId
+    }
+}
+
+export function fetchLists() {
+    return {
+        type: FETCH_LISTS,
+        isFetching: true
     }
 }
 
