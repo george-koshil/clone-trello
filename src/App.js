@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import BoardCreator from "./components/BoardCreator";
 import TodoAppBar from "./components/TodoAppBar";
 import BoardTile from "./components/BoardTile";
-import {getBoards} from "./fetch_data";
+import getBoards from "./fetch_data/getBoards";
 import {
     BrowserRouter as Router,
         Switch,
@@ -14,19 +14,19 @@ import {
 } from "react-router-dom";
 import store from "./store";
 
+store.subscribe(() => console.log(store.getState()));
 
 class App extends Component {
     componentDidMount() {
         const { dispatch } = this.props;
-        getBoards(dispatch);
-        console.log(this.props, store.getState());
+        dispatch(getBoards());
     }
 
     render() {
     return (
         <Router>
                 <Switch>
-                    {this.props.boards.map(board => {
+                    {this.props.boards.items.map(board => {
                         return(
                             <Route key={'route' + board.id} path={'/' + board.id.toString()}>
                                 <Board key={'board' + board.id} board={board} />
@@ -40,10 +40,10 @@ class App extends Component {
                         <TodoAppBar/>
                         <BoardCreator boards={this.props.boards}/>
                         <div className='BoardTileBar'>
-                            {this.props.boards.map(board => {
+                            {this.props.boards.items.map(board => {
                                 return(
                                     <Link key={'link' + board.id} to={'/' + board.id.toString()}>
-                                        <BoardTile key={board.id} title={board.title} />
+                                        <BoardTile key={board.id} name={board.name} />
                                     </Link>
                                 )
                             })}

@@ -22,7 +22,7 @@ export default function BoardReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: action.isFetching,
-                items: [...state.items, ...action.items]
+                items: [...state.items, ...action.boards]
             };
         default:
             return state
