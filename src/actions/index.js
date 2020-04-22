@@ -39,16 +39,14 @@ export function addList(listName, boardId) {
         type: ADD_LIST,
         listName,
         boardId
-
     }
 }
 
-export function addLists(lists, boardId) {
+export function addLists(lists) {
     return {
         type: ADD_LISTS,
         isFetching: false,
-        lists,
-        boardId
+        lists
     }
 }
 
