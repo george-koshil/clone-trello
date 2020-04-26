@@ -5,18 +5,15 @@ import CardCreator from "./CardCreator";
 import { Droppable } from 'react-beautiful-dnd'
 
 
-function TaskList({cards, title,id, boardId}) {
+function TaskList({cards, name,id, boardId}) {
     return(
         <div className='TaskList'>
-            <TaskListTitle title={title}/>
+            <TaskListTitle title={name}/>
             <hr />
 
             <Droppable droppableId={id}>
                 {(provided) =>(
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {cards.map((card,index) => (
-                            <Card text={card.text} key={card.id} id={card.id} index={index}/>
-                        ))}
                         {provided.placeholder}
                     </div>)}
             </Droppable>

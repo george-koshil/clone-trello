@@ -10,19 +10,21 @@ export default function ListReducer(state = initialState, action) {
         case FETCH_LISTS:
             return {
                 ...state,
-                isFetching: action.isFetching
+                isFetching: true
             };
         case ADD_LIST:
             return {
                 ...state,
-                isFetching: action.isFetching,
+                isFetching: false,
                 items: [...state.items, action.list]
             };
         case ADD_LISTS:
             return {
                 ...state,
-                isFetching: action.isFetching,
+                isFetching: false,
                 items: [...state.items, ...action.lists]
-            }
+            };
+        default:
+            return state
     }
 }

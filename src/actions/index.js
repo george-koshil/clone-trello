@@ -20,15 +20,13 @@ export function addBoard(boardName) {
 export function addBoards(boards) {
     return {
         type: ADD_BOARDS,
-        isFetching: false,
         boards
     }
 }
 
 export function fetchBoards() {
     return {
-        type: FETCH_BOARDS,
-        isFetching: true
+        type: FETCH_BOARDS
     }
 }
 
@@ -45,15 +43,13 @@ export function addList(listName, boardId) {
 export function addLists(lists) {
     return {
         type: ADD_LISTS,
-        isFetching: false,
         lists
     }
 }
 
 export function fetchLists() {
     return {
-        type: FETCH_LISTS,
-        isFetching: true
+        type: FETCH_LISTS
     }
 }
 

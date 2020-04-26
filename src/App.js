@@ -14,8 +14,6 @@ import {
 } from "react-router-dom";
 import store from "./store";
 
-store.subscribe(() => console.log(store.getState()));
-
 class App extends Component {
     componentDidMount() {
         const { dispatch } = this.props;

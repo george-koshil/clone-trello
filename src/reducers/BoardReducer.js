@@ -10,18 +10,18 @@ export default function BoardReducer(state = initialState, action) {
         case FETCH_BOARDS:
             return {
                 ...state,
-                isFetching: action.isFetching
+                isFetching: true
             };
         case ADD_BOARD:
             return {
                 ...state,
-                isFetching: action.isFetching,
+                isFetching: false,
                 items: [...state.items, action.board]
             };
         case ADD_BOARDS:
             return {
                 ...state,
-                isFetching: action.isFetching,
+                isFetching: false,
                 items: [...state.items, ...action.boards]
             };
         default:

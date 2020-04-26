@@ -3,14 +3,17 @@ import TodoAppBar from "./TodoAppBar";
 import { DragDropContext}  from "react-beautiful-dnd";
 import store from "../store";
 import AddListButton from "./AddListButton";
-import React from "react";
+import React, {useEffect} from "react";
+import {getLists} from "../fetch_data/getLists";
 
 function Board({board}) {
-    const onDragEnd = rezult => {
+    useEffect(() => getLists(board.id), []);
+
+    function onDragEnd(rezult) {
         const {source, destination} = rezult;
 
         if(destination.droppableId === source.droppableId &&
-        destination.index === source.index) {
+            destination.index === source.index) {
             return;
         }
 
@@ -41,9 +44,7 @@ function Board({board}) {
                 <div>
                     <TodoAppBar/>
                     <div className='Board'>
-                        {board.lists.map((list, index) => (
-                            <TaskList key={list.id} cards={list.cards} title={list.title} boardId={board.id} id={index.toString()}/>
-                        ))}
+                        {store.getState()}
 
                         <AddListButton boardId={board.id}/>
                     </div>
@@ -54,6 +55,7 @@ function Board({board}) {
 
     )
 }
+
 
 export default Board
 
