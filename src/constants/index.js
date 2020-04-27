@@ -1,31 +1,28 @@
-const TOKEN = '13bf9be2e2841edb8edff97d36c92c886e0ac6c45698ae23d5af86102b92dd0c';
+export const TOKEN = '13bf9be2e2841edb8edff97d36c92c886e0ac6c45698ae23d5af86102b92dd0c';
 
-const ADD_BOARD = 'ADD BOARD';
+export const RECEIVE_BOARD = 'RECEIVE BOARD';
 
-const FETCH_BOARDS = 'FETCH BOARDS';
+export const REQUEST_BOARDS = 'REQUEST BOARDS';
 
-const ADD_BOARDS = 'ADD BOARDS';
+export const RECEIVE_BOARDS = 'RECEIVE BOARDS';
 
-const ADD_LIST = 'ADD LIST';
+export const RECEIVE_LIST = 'RECEIVE LIST';
 
-const ADD_LISTS = 'ADD LISTS';
+export const RECEIVE_LISTS = 'RECEIVE LISTS';
 
-const FETCH_LISTS = 'FETCH LISTS';
+export const REQUEST_LISTS = 'REQUEST LISTS';
 
-const ADD_CARD = 'ADD CARDS';
+export const RECEIVE_CARD = 'RECEIVE CARDS';
 
-const ADD_CARDS = 'ADD CARDS';
+export const REQUEST_CARDS = 'REQUEST_CARDS';
 
-const DRAG_CARD = 'DRAG CARD';
+export const RECEIVE_CARDS = 'RECEIVE CARDS';
 
-const API_BASE_URL = 'https://api.trello.com';
+export const API_BASE_URL = 'https://api.trello.com';
 
-const API_VERSION = '1';
+export const API_VERSION = '1';
 
-const API_KEY = 'b844759cfed852eb9d066308f02dbcd9';
+export const API_KEY = 'b844759cfed852eb9d066308f02dbcd9';
 
-const AUTH = `key=${API_KEY}&token=${TOKEN}`;
-
-export {FETCH_LISTS,ADD_BOARD, ADD_BOARDS, ADD_LISTS, ADD_CARDS, ADD_CARD, DRAG_CARD, API_BASE_URL, AUTH, API_VERSION, ADD_LIST, FETCH_BOARDS}
-
+export const AUTH = `key=${API_KEY}&token=${TOKEN}`;
 

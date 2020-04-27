@@ -1,27 +1,38 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Card from "./Card";
 import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
-import { Droppable } from 'react-beautiful-dnd'
+import { connect } from "react-redux";
+import {fetchCards} from "../actions";
 
 
-function TaskList({cards, name,id, boardId}) {
+function TaskList(props) {
+    useEffect(() => props.dispatch(fetchCards(props.listId)),[]);
+
     return(
         <div className='TaskList'>
-            <TaskListTitle title={name}/>
+            <TaskListTitle title={props.name}/>
             <hr />
 
-            <Droppable droppableId={id}>
-                {(provided) =>(
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {provided.placeholder}
-                    </div>)}
-            </Droppable>
+            {props.cards.map((card, index) => {
+                if(card.idList === props.listId) {
+                    return <Card
+                        name={card.name}
+                        key={index}
+                    />
+                }
+            })}
 
-            <CardCreator boardId={boardId} listId={id}/>
+            <CardCreator boardId={props.boardId} listId={props.listId}/>
         </div>
     )
 
 }
 
-export default TaskList
+const mapStateToProps = store => {
+  return {
+     cards: store.card.items
+  }
+};
+
+export default connect(mapStateToProps)(TaskList)

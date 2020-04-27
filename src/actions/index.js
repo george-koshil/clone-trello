@@ -1,82 +1,109 @@
 import {
-    ADD_BOARD,
-    ADD_BOARDS,
-    ADD_CARD,
-    ADD_CARDS,
-    ADD_LIST,
-    ADD_LISTS,
-    DRAG_CARD,
-    FETCH_BOARDS,
-    FETCH_LISTS
+    RECEIVE_BOARD,
+    RECEIVE_BOARDS,
+    RECEIVE_CARD,
+    RECEIVE_CARDS,
+    RECEIVE_LIST,
+    RECEIVE_LISTS,
+    REQUEST_BOARDS,
+    REQUEST_LISTS,
+    REQUEST_CARDS
 } from "../constants";
+import {sendRequest} from "../fetch_data/sendRequest";
+import store from "../store";
 
-export function addBoard(boardName) {
+export function receiveBoard(boardName) {
     return {
-        type: ADD_BOARD,
+        type: RECEIVE_BOARD,
         boardName
     }
 }
 
-export function addBoards(boards) {
+export function receiveBoards(boards) {
     return {
-        type: ADD_BOARDS,
+        type: RECEIVE_BOARDS,
         boards
     }
 }
 
-export function fetchBoards() {
+export function requestBoards() {
     return {
-        type: FETCH_BOARDS
+        type: REQUEST_BOARDS
     }
 }
 
-
-
-export function addList(listName, boardId) {
+export function receiveList(listName, boardId) {
     return {
-        type: ADD_LIST,
+        type: RECEIVE_LIST,
         listName,
         boardId
     }
 }
 
-export function addLists(lists) {
+export function receiveLists(lists) {
     return {
-        type: ADD_LISTS,
+        type: RECEIVE_LISTS,
         lists
     }
 }
 
-export function fetchLists() {
+export function requestLists() {
     return {
-        type: FETCH_LISTS
+        type: REQUEST_LISTS
     }
 }
 
-export function addCard(cardName, listId, boardId) {
+export function receiveCard(cardName, listId, boardId) {
     return {
-        type: ADD_CARD,
+        type: RECEIVE_CARD,
         cardName,
         listId,
         boardId
     }
 }
 
-export function addCards(cards, listId, boardId) {
+export function receiveCards(cards) {
     return {
-        type: ADD_CARDS,
-        cards,
-        listId,
-        boardId
+        type: RECEIVE_CARDS,
+        cards
     }
 }
 
-export function dragCard(cards, listId, boardId) {
+export function requestCards() {
     return {
-        type: DRAG_CARD,
-        cards,
-        listId,
-        boardId
+        type: REQUEST_CARDS
     }
 }
 
+export  function fetchBoards() {
+    return dispatch => {
+        dispatch(requestBoards());
+
+        sendRequest(`/members/me/boards`)
+            .then(boards => {
+                dispatch(receiveBoards(boards));
+            })
+    }
+}
+
+export  function fetchCards(listId) {
+    return dispatch => {
+            dispatch(requestCards());
+
+            sendRequest(`/lists/${listId}/cards`)
+                .then(cards => {
+                    dispatch(receiveCards(cards));
+                })
+    }
+}
+
+export function fetchLists(boardId) {
+    return dispatch => {
+            dispatch(requestLists());
+
+            sendRequest(`/boards/${boardId}/lists`)
+                .then(lists => {
+                    dispatch(receiveLists(lists, boardId));
+                })
+    }
+}

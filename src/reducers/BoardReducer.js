@@ -1,4 +1,4 @@
-import {ADD_BOARD, ADD_BOARDS, FETCH_BOARDS} from "../constants";
+import {RECEIVE_BOARD, RECEIVE_BOARDS, REQUEST_BOARDS} from "../constants";
 
 const initialState = {
     isFetching: false,
@@ -7,18 +7,18 @@ const initialState = {
 
 export default function BoardReducer(state = initialState, action) {
     switch(action.type) {
-        case FETCH_BOARDS:
+        case REQUEST_BOARDS:
             return {
                 ...state,
                 isFetching: true
             };
-        case ADD_BOARD:
+        case RECEIVE_BOARD:
             return {
                 ...state,
                 isFetching: false,
                 items: [...state.items, action.board]
             };
-        case ADD_BOARDS:
+        case RECEIVE_BOARDS:
             return {
                 ...state,
                 isFetching: false,

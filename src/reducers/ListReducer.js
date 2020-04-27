@@ -1,4 +1,4 @@
-import {ADD_LIST, ADD_LISTS, FETCH_LISTS} from "../constants";
+import {RECEIVE_LIST, RECEIVE_LISTS, REQUEST_LISTS} from "../constants";
 
 const initialState = {
     isFetching: false,
@@ -7,18 +7,18 @@ const initialState = {
 
 export default function ListReducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_LISTS:
+        case REQUEST_LISTS:
             return {
                 ...state,
                 isFetching: true
             };
-        case ADD_LIST:
+        case RECEIVE_LIST:
             return {
                 ...state,
                 isFetching: false,
                 items: [...state.items, action.list]
             };
-        case ADD_LISTS:
+        case RECEIVE_LISTS:
             return {
                 ...state,
                 isFetching: false,
