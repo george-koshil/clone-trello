@@ -6,14 +6,12 @@ import {fetchLists} from "../actions";
 import {connect} from "react-redux";
 
 function Board(props) {
-    useEffect(() => {
-        props.dispatch(fetchLists(props.board.id));
-    }, []);
+    useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
 
     return (
         <div>
-                <div>
-                    <TodoAppBar/>
+            <div>
+                <TodoAppBar/>
                     <div className='Board'>
                         {props.lists.map((list, index) => {
                            if(list.idBoard === props.board.id) {
@@ -25,7 +23,7 @@ function Board(props) {
                                />
                            }
                         })}
-                        <AddListButton boardId={props.board.id}/>
+                        <AddListButton idBoard={props.board.id}/>
                     </div>
                 </div>
 

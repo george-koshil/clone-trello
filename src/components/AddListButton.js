@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
-import store from "../store";
 import CloseIcon from "@material-ui/icons/Close";
-import {addList} from "../actions";
+import {createList} from "../actions";
+import { connect } from "react-redux";
 
-export default function AddListButton({boardId}) {
+function AddListButton(props) {
     const [onAddList, setOnAddList] = useState(false);
     const [listName, setListName] = useState('');
 
@@ -33,7 +33,7 @@ export default function AddListButton({boardId}) {
                         size='small'
                         startIcon={<AddIcon/>}
                         onClick={() => {
-                            store.dispatch(addList(listName, boardId));
+                            props.createList(listName, props.idBoard);
                             setOnAddList(false);
                             setListName('');
                         }
@@ -65,3 +65,9 @@ export default function AddListButton({boardId}) {
       </div>
     );
 }
+
+const mapDispatchToProps = {
+    createList
+};
+
+export default connect(null, mapDispatchToProps)(AddListButton)

@@ -32,11 +32,10 @@ export function requestBoards() {
     }
 }
 
-export function receiveList(listName, boardId) {
+export function receiveList(list) {
     return {
         type: RECEIVE_LIST,
-        listName,
-        boardId
+        list
     }
 }
 
@@ -121,6 +120,24 @@ export function createBoard(name) {
             .then(board => {
                 dispatch(receiveBoard(board))
             })
+    }
+}
+
+export function createList(name, idBoard) {
+    return dispatch => {
+        dispatch(requestLists());
+
+        sendRequest('/lists/', {
+            method: 'POST',
+            params: {
+                name,
+                idBoard
+            }
+        })
+            .then(list => {
+                dispatch(receiveList(list))
+            })
+
     }
 }
 
