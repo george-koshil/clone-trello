@@ -1,11 +1,13 @@
 import React,{useState} from "react";
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
+import { connect } from "react-redux";
+import {createBoard} from "../actions";
 import store from "../store";
-import {addBoard} from "../actions";
 
+store.subscribe(() => console.log(store.getState()));
 
-function BoardCreator({boards}) {
+function BoardCreator(props) {
     let [onBoardCreator, setOnBoardCreator] = useState(false);
     let [boardName, setBoardName] = useState('');
 
@@ -32,7 +34,7 @@ function BoardCreator({boards}) {
                       variant="contained"
                       color="primary"
                       onClick={() => {
-                          store.dispatch(addBoard(boardName));
+                          props.createBoard(boardName);
                           setBoardName('');
                           setOnBoardCreator(false);
                       }
@@ -61,4 +63,8 @@ function BoardCreator({boards}) {
     );
 }
 
-export default BoardCreator
+const mapDispatchToProps = {
+  createBoard
+};
+
+export default connect(null, mapDispatchToProps)(BoardCreator)

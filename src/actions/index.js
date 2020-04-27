@@ -12,10 +12,10 @@ import {
 import {sendRequest} from "../fetch_data/sendRequest";
 import store from "../store";
 
-export function receiveBoard(boardName) {
+export function receiveBoard(board) {
     return {
         type: RECEIVE_BOARD,
-        boardName
+        board
     }
 }
 
@@ -107,3 +107,22 @@ export function fetchLists(boardId) {
                 })
     }
 }
+
+export function createBoard(name) {
+    return dispatch => {
+        dispatch(requestBoards());
+
+        sendRequest(`/boards/`, {
+            method: 'POST',
+            params: {
+                name
+            }
+        })
+            .then(board => {
+                dispatch(receiveBoard(board))
+            })
+    }
+}
+
+
+

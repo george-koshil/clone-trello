@@ -23,7 +23,7 @@ class App extends Component {
     return (
         <Router>
                 <Switch>
-                    {this.props.boards.items.map(board => {
+                    {this.props.boards.map(board => {
                         return(
                             <Route key={'route' + board.id} path={'/' + board.id.toString()}>
                                 <Board key={'board' + board.id} board={board} />
@@ -37,7 +37,7 @@ class App extends Component {
                         <TodoAppBar/>
                         <BoardCreator boards={this.props.boards.items}/>
                         <div className='BoardTileBar'>
-                            {this.props.boards.items.map(board => {
+                            {this.props.boards.map(board => {
                                 return(
                                     <Link key={'link' + board.id} to={'/' + board.id.toString()}>
                                         <BoardTile key={board.id} name={board.name} />
@@ -54,8 +54,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-    boards: state.board,
-    lists: state.list
+    boards: state.board.items
 });
 
 export default connect(mapStateToProps)(App);
