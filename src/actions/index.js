@@ -52,12 +52,10 @@ export function requestLists() {
     }
 }
 
-export function receiveCard(cardName, listId, boardId) {
+export function receiveCard(card) {
     return {
         type: RECEIVE_CARD,
-        cardName,
-        listId,
-        boardId
+        card
     }
 }
 
@@ -138,6 +136,23 @@ export function createList(name, idBoard) {
                 dispatch(receiveList(list))
             })
 
+    }
+}
+
+export function createCard(name, idList) {
+    return dispatch => {
+        dispatch(requestCards());
+
+        sendRequest('/cards', {
+            method: 'POST',
+            params: {
+                name,
+                idList
+            }
+        })
+            .then(card => {
+                dispatch(receiveCard(card));
+            })
     }
 }
 

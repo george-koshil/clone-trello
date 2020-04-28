@@ -19,7 +19,7 @@ function Board(props) {
                                    key={index}
                                    name={list.name}
                                    boardId={list.idBoard}
-                                   listId={list.id}
+                                   idList={list.id}
                                />
                            }
                         })}

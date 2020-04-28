@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
-import store from "../store";
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
-import {addCard} from "../actions";
+import {createCard} from "../actions";
+import { connect } from "react-redux";
 
 
-function CardCreator({listId, boardId}) {
+function CardCreator(props) {
     let [onCardInput, setOnCardInput] = useState(false);
     let [cardName, setCardName] = useState('');
 
@@ -34,7 +34,7 @@ function CardCreator({listId, boardId}) {
                         size='small'
                         startIcon={<AddIcon/>}
                         onClick={() => {
-                            store.dispatch(addCard(cardName,listId,boardId));
+                            props.createCard(cardName, props.idList);
                             setCardName('');
                         }
                         }
@@ -66,4 +66,8 @@ function CardCreator({listId, boardId}) {
     );
 }
 
-export default CardCreator
+const mapDispatchToProps = {
+    createCard
+};
+
+export default connect(null,mapDispatchToProps)(CardCreator)

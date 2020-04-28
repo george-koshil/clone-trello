@@ -12,7 +12,7 @@ export const RECEIVE_LISTS = 'RECEIVE LISTS';
 
 export const REQUEST_LISTS = 'REQUEST LISTS';
 
-export const RECEIVE_CARD = 'RECEIVE CARDS';
+export const RECEIVE_CARD = 'RECEIVE CARD';
 
 export const REQUEST_CARDS = 'REQUEST_CARDS';
 

@@ -4,10 +4,10 @@ import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
 import { connect } from "react-redux";
 import {fetchCards} from "../actions";
-
+import store from "../store";
 
 function TaskList(props) {
-    useEffect(() => props.dispatch(fetchCards(props.listId)),[]);
+    useEffect(() => props.dispatch(fetchCards(props.idList)),[]);
 
     return(
         <div className='TaskList'>
@@ -15,18 +15,16 @@ function TaskList(props) {
             <hr />
 
             {props.cards.map((card, index) => {
-                if(card.idList === props.listId) {
+                if(card.idList === props.idList) {
                     return <Card
                         name={card.name}
                         key={index}
                     />
                 }
             })}
-
-            <CardCreator boardId={props.boardId} listId={props.listId}/>
+            <CardCreator idList={props.idList}/>
         </div>
     )
-
 }
 
 const mapStateToProps = store => {
@@ -36,3 +34,8 @@ const mapStateToProps = store => {
 };
 
 export default connect(mapStateToProps)(TaskList)
+
+
+
+
+//store.subscribe(() => console.log(store.getState()));
