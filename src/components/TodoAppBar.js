@@ -19,8 +19,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-
-
 function TodoAppBar() {
     const classes = useStyles();
     return(
@@ -31,7 +29,7 @@ function TodoAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Tasker
+                        Trello
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>

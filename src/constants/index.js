@@ -18,6 +18,8 @@ export const REQUEST_CARDS = 'REQUEST_CARDS';
 
 export const RECEIVE_CARDS = 'RECEIVE CARDS';
 
+export const DELETE_CARDS = 'DELETE CARDS';
+
 export const API_BASE_URL = 'https://api.trello.com';
 
 export const API_VERSION = '1';

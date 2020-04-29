@@ -7,10 +7,10 @@ import {
     RECEIVE_LISTS,
     REQUEST_BOARDS,
     REQUEST_LISTS,
-    REQUEST_CARDS
+    REQUEST_CARDS,
+    DELETE_CARDS
 } from "../constants";
 import {sendRequest} from "../fetch_data/sendRequest";
-import store from "../store";
 
 export function receiveBoard(board) {
     return {
@@ -69,6 +69,12 @@ export function receiveCards(cards) {
 export function requestCards() {
     return {
         type: REQUEST_CARDS
+    }
+}
+
+export function deleteCards() {
+    return {
+        type: DELETE_CARDS
     }
 }
 
@@ -155,6 +161,7 @@ export function createCard(name, idList) {
             })
     }
 }
+
 
 
 

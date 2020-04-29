@@ -22,7 +22,7 @@ export default function ListReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
-                items: [...state.items, ...action.lists]
+                items: action.lists
             };
         default:
             return state

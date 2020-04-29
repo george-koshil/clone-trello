@@ -3,11 +3,13 @@ import Card from "./Card";
 import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
 import { connect } from "react-redux";
-import {fetchCards} from "../actions";
-import store from "../store";
+import {fetchCards,deleteCards} from "../actions";
 
 function TaskList(props) {
-    useEffect(() => props.dispatch(fetchCards(props.idList)),[]);
+    useEffect(() => {
+        props.dispatch(fetchCards(props.idList));
+        return () => props.dispatch(deleteCards())
+    },[]);
 
     return(
         <div className='TaskList'>
@@ -34,8 +36,3 @@ const mapStateToProps = store => {
 };
 
 export default connect(mapStateToProps)(TaskList)
-
-
-
-
-//store.subscribe(() => console.log(store.getState()));
