@@ -4,6 +4,7 @@ import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
 import { connect } from "react-redux";
 import {fetchCards,deleteCards} from "../actions";
+import { Droppable } from "react-beautiful-dnd";
 
 function TaskList(props) {
     useEffect(() => {
@@ -11,19 +12,32 @@ function TaskList(props) {
         return () => props.dispatch(deleteCards())
     },[]);
 
+    let cards = null;
+    if(props.cards[props.idList]) {
+        cards = props.cards[props.idList].map((card, index) => {
+                return <Card
+                    name={card.name}
+                    key={index}
+                    id={card.id}
+                    index={index}
+                />
+        })
+    }
+
     return(
         <div className='TaskList'>
             <TaskListTitle title={props.name}/>
             <hr />
 
-            {props.cards.map((card, index) => {
-                if(card.idList === props.idList) {
-                    return <Card
-                        name={card.name}
-                        key={index}
-                    />
-                }
-            })}
+            <Droppable droppableId={props.idList}>
+                {provided => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                        {cards}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+
             <CardCreator idList={props.idList}/>
         </div>
     )

@@ -8,7 +8,7 @@ import {
     REQUEST_BOARDS,
     REQUEST_LISTS,
     REQUEST_CARDS,
-    DELETE_CARDS
+    DELETE_CARDS, DRAG_CARD
 } from "../constants";
 import {sendRequest} from "../fetch_data/sendRequest";
 
@@ -59,10 +59,11 @@ export function receiveCard(card) {
     }
 }
 
-export function receiveCards(cards) {
+export function receiveCards(cards,idList) {
     return {
         type: RECEIVE_CARDS,
-        cards
+        cards,
+        idList
     }
 }
 
@@ -95,7 +96,7 @@ export  function fetchCards(listId) {
 
             sendRequest(`/lists/${listId}/cards`)
                 .then(cards => {
-                    dispatch(receiveCards(cards));
+                    dispatch(receiveCards(cards,listId));
                 })
     }
 }
@@ -153,7 +154,7 @@ export function createCard(name, idList) {
             method: 'POST',
             params: {
                 name,
-                idList
+                idList,
             }
         })
             .then(card => {
@@ -162,6 +163,11 @@ export function createCard(name, idList) {
     }
 }
 
-
+export function dragCard(idList) {
+    return {
+        type: DRAG_CARD,
+        idList
+    }
+}
 
 
