@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 
 function Card(props) {
     return(
-        <Draggable draggableId={props.id} index={props.index}>
+        <Draggable draggableId={props.id + props.index} index={props.index}>
             {provided => (
                 <div
                     className='Card'

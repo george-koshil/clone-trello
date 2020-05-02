@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd"
 import store from "../store";
 
-store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => console.log(store.getState().card.items));
 function Board(props) {
     useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
 
@@ -27,7 +27,6 @@ function Board(props) {
         let destinationList = [...props.cards[destination.droppableId]];
         let card = {...props.cards[source.droppableId][source.index]};
 
-        console.log(source.index)
 
         if(source.droppableId === destination.droppableId) {
             sourceList.splice(source.index, 1);
