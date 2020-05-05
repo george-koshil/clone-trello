@@ -12,8 +12,8 @@ store.subscribe(() => console.log(store.getState().card.items));
 function Board(props) {
     useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
 
-    function onDragEnd(rezult) {
-        const {source, destination} = rezult;
+    function onDragEnd(result) {
+        const {source, destination} = result;
 
         if(destination.droppableId === source.droppableId &&
             destination.index === source.index) {
@@ -26,6 +26,8 @@ function Board(props) {
 
         let sourceList = [...props.cards[source.droppableId]];
         let destinationList = [...props.cards[destination.droppableId]];
+        let prevSourceList = [...sourceList];
+        let prevDestinationList = [...destinationList];
         let card = {...props.cards[source.droppableId][source.index]};
 
         if(source.droppableId === destination.droppableId) {
@@ -34,7 +36,7 @@ function Board(props) {
             card.pos = getPos(destination.index, sourceList);
             sourceList.splice(destination.index, 1);
             sourceList.splice(destination.index, 0, card);
-            props.dispatch(dragCard(sourceList, null, source.droppableId, null, card, destination.index));
+            props.dispatch(dragCard(sourceList, null, source.droppableId, null, card, destination.index, prevSourceList, prevDestinationList));
         }
         else {
             sourceList.splice(source.index, 1);
@@ -42,9 +44,10 @@ function Board(props) {
             card.pos = getPos(destination.index, destinationList);
             destinationList.splice(destination.index, 1);
             destinationList.splice(destination.index, 0, card);
-            props.dispatch(dragCard(sourceList, destinationList, source.droppableId, destination.droppableId, card, destination.index));
+            props.dispatch(dragCard(sourceList, destinationList, source.droppableId, destination.droppableId, card, destination.index, prevSourceList, prevDestinationList));
         }
     }
+
     return (
         <DragDropContext onDragEnd={onDragEnd}>
                 <TodoAppBar/>

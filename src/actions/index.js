@@ -8,8 +8,7 @@ import {
     REQUEST_BOARDS,
     REQUEST_LISTS,
     REQUEST_CARDS,
-    DELETE_CARDS,
-    AUTH
+    DELETE_CARDS
 } from "../constants";
 import {sendRequest} from "../fetch_data/sendRequest";
 
@@ -166,7 +165,7 @@ export function createCard(name, idList) {
 }
 
 
-export function dragCard(sourceCards, destinationCards, sourceIdList, destinationIdList, card, index, prevList) {
+export function dragCard(sourceCards, destinationCards, sourceIdList, destinationIdList, card, index, prevSourceList, prevDestinationList) {
     return dispatch => {
         let idList = sourceIdList;
         let cards = sourceCards;
@@ -179,6 +178,7 @@ export function dragCard(sourceCards, destinationCards, sourceIdList, destinatio
         }
         dispatch(receiveCards(sourceCards, sourceIdList));
 
+        console.log(prevSourceList)
         sendRequest(`/cards/${card.id}`, {
             method: 'PUT',
             params: {
@@ -187,7 +187,13 @@ export function dragCard(sourceCards, destinationCards, sourceIdList, destinatio
             }
         })
             .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .catch(() => {
+                if(destinationCards && destinationIdList) {
+                    dispatch(receiveCards(prevSourceList, sourceIdList));
+                    dispatch(receiveCards(prevDestinationList, destinationIdList));
+                }
+                else dispatch(receiveCards(prevSourceList, sourceIdList));
+            })
     }
 }
 
