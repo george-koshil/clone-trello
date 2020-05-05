@@ -20,6 +20,7 @@ function TaskList(props) {
                     key={index}
                     id={card.id}
                     index={index}
+                    listIndex={props.listIndex}
                 />
         })
     }

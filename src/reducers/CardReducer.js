@@ -1,4 +1,4 @@
-import {RECEIVE_CARDS, RECEIVE_CARD, REQUEST_CARDS, DELETE_CARDS, DRAG_CARD} from "../constants";
+import {RECEIVE_CARDS, RECEIVE_CARD, REQUEST_CARDS, DELETE_CARDS} from "../constants";
 
 const initialState = {
   isFetching: false,
@@ -28,11 +28,6 @@ export default function CardReducer(state = initialState, action) {
             return {
                 ...state,
                 items: {}
-            };
-        case DRAG_CARD:
-            return {
-                ...state,
-                items: [...state]
             };
         default:
             return state

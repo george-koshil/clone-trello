@@ -2,12 +2,13 @@ import TaskList from "./TaskList";
 import TodoAppBar from "./TodoAppBar";
 import AddListButton from "./AddListButton";
 import React, {useEffect} from "react";
-import {deleteCards, fetchLists, receiveCards} from "../actions";
+import { fetchLists, dragCard, getPos} from "../actions";
 import {connect} from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd"
 import store from "../store";
 
 store.subscribe(() => console.log(store.getState().card.items));
+
 function Board(props) {
     useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
 
@@ -27,17 +28,21 @@ function Board(props) {
         let destinationList = [...props.cards[destination.droppableId]];
         let card = {...props.cards[source.droppableId][source.index]};
 
-
         if(source.droppableId === destination.droppableId) {
             sourceList.splice(source.index, 1);
             sourceList.splice(destination.index, 0, card);
-            props.dispatch(receiveCards(sourceList, source.droppableId));
+            card.pos = getPos(destination.index, sourceList);
+            sourceList.splice(destination.index, 1);
+            sourceList.splice(destination.index, 0, card);
+            props.dispatch(dragCard(sourceList, null, source.droppableId, null, card, destination.index));
         }
         else {
             sourceList.splice(source.index, 1);
             destinationList.splice(destination.index, 0, card);
-            props.dispatch(receiveCards(sourceList, source.droppableId));
-            props.dispatch(receiveCards(destinationList, destination.droppableId));
+            card.pos = getPos(destination.index, destinationList);
+            destinationList.splice(destination.index, 1);
+            destinationList.splice(destination.index, 0, card);
+            props.dispatch(dragCard(sourceList, destinationList, source.droppableId, destination.droppableId, card, destination.index));
         }
     }
     return (
@@ -51,6 +56,7 @@ function Board(props) {
                                    name={list.name}
                                    boardId={list.idBoard}
                                    idList={list.id}
+                                   listIndex={index}
                                />
                            }
                         })}
@@ -66,6 +72,8 @@ const mapStateToProps = store => {
         cards:store.card.items
     }
 };
+
+
 
 
 export default connect(mapStateToProps)(Board)

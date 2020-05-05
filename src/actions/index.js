@@ -8,7 +8,8 @@ import {
     REQUEST_BOARDS,
     REQUEST_LISTS,
     REQUEST_CARDS,
-    DELETE_CARDS, DRAG_CARD
+    DELETE_CARDS,
+    AUTH
 } from "../constants";
 import {sendRequest} from "../fetch_data/sendRequest";
 
@@ -52,10 +53,11 @@ export function requestLists() {
     }
 }
 
-export function receiveCard(card) {
+export function receiveCard(card, idList) {
     return {
         type: RECEIVE_CARD,
-        card
+        card,
+        idList
     }
 }
 
@@ -158,16 +160,49 @@ export function createCard(name, idList) {
             }
         })
             .then(card => {
-                dispatch(receiveCard(card));
+                dispatch(receiveCard(card, idList));
             })
     }
 }
 
-export function dragCard(idList) {
-    return {
-        type: DRAG_CARD,
-        idList
+
+export function dragCard(sourceCards, destinationCards, sourceIdList, destinationIdList, card, index, prevList) {
+    return dispatch => {
+        let idList = sourceIdList;
+        let cards = sourceCards;
+
+        if(destinationCards && destinationIdList) {
+            dispatch(receiveCards(sourceCards, sourceIdList));
+            dispatch(receiveCards(destinationCards, destinationIdList));
+            idList = destinationIdList;
+            cards = destinationCards;
+        }
+        dispatch(receiveCards(sourceCards, sourceIdList));
+
+        sendRequest(`/cards/${card.id}`, {
+            method: 'PUT',
+            params: {
+                idList,
+                pos: getPos(index, cards)
+            }
+        })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
     }
 }
 
+
+export function getPos(index,cards) {
+    let pos1, pos2;
+
+    if(cards.length === 1) return cards[index].pos;
+
+    if(index === 0) return cards[index + 1].pos / 2;
+    else pos1 = cards[index - 1].pos;
+
+    if(index === cards.length - 1) return cards[index - 1].pos + 16384;
+    else pos2 = cards[index + 1].pos;
+
+    return (pos1 + pos2) / 2
+}
 
