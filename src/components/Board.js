@@ -8,11 +8,8 @@ import { DragDropContext } from "react-beautiful-dnd"
 import store from "../store";
 import {Trash} from "./Trash";
 
-store.subscribe(() => console.log(store.getState().card.items));
-
 function Board(props) {
     useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
-
     const onDragEnd = (result) => {
         const {source, destination} = result;
 
@@ -72,7 +69,6 @@ function Board(props) {
                         })}
                         <AddListButton idBoard={props.board.id}/>
                     </div>
-            <Trash/>
         </DragDropContext>
     )
 }

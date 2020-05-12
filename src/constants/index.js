@@ -1,4 +1,4 @@
-export const TOKEN = '12487d78cac2d24e4ecd181e72d1470d';
+export const TOKEN = '420706c4951573771e3b8f2458c9682e3eda62573b85c4f6b7f2ebde87a6b07a';
 
 export const RECEIVE_BOARD = 'RECEIVE BOARD';
 

@@ -9,7 +9,7 @@
    height: 100%;
    padding-bottom: 7px;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: #9fe7a4;
+   background-color: skyblue;
 
 }
 
@@ -92,7 +92,7 @@ body {
 
 .BoardCreator {
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: #9fe7a4;
+   background-color: rgba(9, 30, 66, 0.04);
    margin-top: 30px;
    margin-left: 30px;
    width: 200px;
@@ -114,7 +114,7 @@ body {
    left: 45px;
    font-weight: bold;
    font-family: 'Roboto', sans-serif;
-   color: white;
+   color: darkgrey;
 }
 
 .BoardCreatorTextField {
@@ -140,7 +140,7 @@ body {
 
 .BoardTile {
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: aquamarine;
+   background-color: skyblue;
    margin-top: 30px;
    margin-left: 30px;
    width: 200px;
@@ -151,13 +151,13 @@ body {
 }
 
 .BoardTileBar {
-   width: 1100px;
-   position: absolute;
+   width: 1000px;
    height: 100%;
    display: flex;
-   flex-direction: row;
-   top: 64px;
-   left: 240px;
+   flex-wrap: wrap;
+   margin: auto;
+
+
 
 }
 
@@ -181,12 +181,11 @@ body {
    width: 270px;
    height: 180px;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: #9fe7a4;
+   background-color: skyblue;
    margin-top: 30px;
    margin-left: 30px;
    position: relative;
 }
-
 
 .FormBoardTitle {
    position: absolute;

@@ -15,8 +15,7 @@ import {
 
 class App extends Component {
     componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(fetchBoards());
+        this.props.dispatch(fetchBoards());
     }
 
     render() {
@@ -35,7 +34,6 @@ class App extends Component {
                 <Route exact path='/'>
                     <div className='App-page'>
                         <TodoAppBar/>
-                        <BoardCreator boards={this.props.boards.items}/>
                         <div className='BoardTileBar'>
                             {this.props.boards.map(board => {
                                 return(
@@ -44,6 +42,7 @@ class App extends Component {
                                     </Link>
                                 )
                             })}
+                            <BoardCreator/>
                         </div>
                     </div>
                 </Route>
