@@ -1,4 +1,4 @@
-export const TOKEN = '13bf9be2e2841edb8edff97d36c92c886e0ac6c45698ae23d5af86102b92dd0c';
+export const TOKEN = '12487d78cac2d24e4ecd181e72d1470d';
 
 export const RECEIVE_BOARD = 'RECEIVE BOARD';
 
@@ -20,13 +20,13 @@ export const RECEIVE_CARDS = 'RECEIVE CARDS';
 
 export const DELETE_CARDS = 'DELETE CARDS';
 
-export const DRAG_CARD = 'DRAG CARD';
+export const DELETE_CARD = 'DELETE CARD';
 
 export const API_BASE_URL = 'https://api.trello.com';
 
 export const API_VERSION = '1';
 
-export const API_KEY = 'b844759cfed852eb9d066308f02dbcd9';
+export const API_KEY = '1cfea9d7d56775b6eeaa0aec53d44336';
 
 export const AUTH = `key=${API_KEY}&token=${TOKEN}`;
 

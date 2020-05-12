@@ -8,7 +8,7 @@ import {
     REQUEST_BOARDS,
     REQUEST_LISTS,
     REQUEST_CARDS,
-    DELETE_CARDS
+    DELETE_CARDS, DELETE_CARD, AUTH
 } from "../constants";
 import {sendRequest} from "../fetch_data/sendRequest";
 
@@ -77,6 +77,14 @@ export function requestCards() {
 export function deleteCards() {
     return {
         type: DELETE_CARDS
+    }
+}
+
+export function deleteLocalCard(idCard, idList) {
+    return {
+        type: DELETE_CARD,
+        idCard,
+        idList
     }
 }
 
@@ -164,6 +172,16 @@ export function createCard(name, idList) {
     }
 }
 
+export function deleteCard(idCard, idList) {
+    return dispatch => {
+        dispatch(deleteLocalCard(idCard, idList));
+
+        sendRequest(`/cards/${idCard}?${AUTH}`, {
+            method: 'DELETE'
+        })
+            .then(res => console.log(res))
+    }
+}
 
 export function dragCard(sourceCards, destinationCards, sourceIdList, destinationIdList, card, index, prevSourceList, prevDestinationList) {
     return dispatch => {
@@ -196,7 +214,6 @@ export function dragCard(sourceCards, destinationCards, sourceIdList, destinatio
             })
     }
 }
-
 
 export function getPos(index,cards) {
     let pos1, pos2;

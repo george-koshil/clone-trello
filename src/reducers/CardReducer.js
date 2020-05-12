@@ -1,4 +1,4 @@
-import {RECEIVE_CARDS, RECEIVE_CARD, REQUEST_CARDS, DELETE_CARDS} from "../constants";
+import {RECEIVE_CARDS, RECEIVE_CARD, REQUEST_CARDS, DELETE_CARDS, DELETE_CARD} from "../constants";
 
 const initialState = {
   isFetching: false,
@@ -28,6 +28,14 @@ export default function CardReducer(state = initialState, action) {
             return {
                 ...state,
                 items: {}
+            };
+        case DELETE_CARD:
+            return {
+                ...state,
+                items: {...state.items,
+                    [action.idList]: [...state.items[action.idList].filter(card => {
+                        return card.id !== action.idCard
+                    })]}
             };
         default:
             return state

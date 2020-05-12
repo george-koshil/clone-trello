@@ -2,17 +2,18 @@ import TaskList from "./TaskList";
 import TodoAppBar from "./TodoAppBar";
 import AddListButton from "./AddListButton";
 import React, {useEffect} from "react";
-import { fetchLists, dragCard, getPos} from "../actions";
+import {fetchLists, dragCard, getPos, deleteCard} from "../actions";
 import {connect} from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd"
 import store from "../store";
+import {Trash} from "./Trash";
 
 store.subscribe(() => console.log(store.getState().card.items));
 
 function Board(props) {
     useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
 
-    function onDragEnd(result) {
+    const onDragEnd = (result) => {
         const {source, destination} = result;
 
         if(destination.droppableId === source.droppableId &&
@@ -21,6 +22,12 @@ function Board(props) {
         }
 
         if(!destination) {
+            return;
+        }
+
+        if(destination.droppableId === 'Trash') {
+            const card = {...props.cards[source.droppableId][source.index]};
+            props.dispatch(deleteCard(card.id, source.droppableId));
             return;
         }
 
@@ -65,6 +72,7 @@ function Board(props) {
                         })}
                         <AddListButton idBoard={props.board.id}/>
                     </div>
+            <Trash/>
         </DragDropContext>
     )
 }
@@ -75,9 +83,6 @@ const mapStateToProps = store => {
         cards:store.card.items
     }
 };
-
-
-
 
 export default connect(mapStateToProps)(Board)
 
