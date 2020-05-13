@@ -12,6 +12,7 @@ import {
         Route,
         Link
 } from "react-router-dom";
+import LogIn from "./components/LogIn";
 
 class App extends Component {
     componentDidMount() {
@@ -31,7 +32,11 @@ class App extends Component {
 
                     })}
 
-                <Route exact path='/'>
+                    <Route exact path='/' >
+                        <LogIn/>
+                    </Route>
+
+                <Route path='/boards'>
                     <div className='App-page'>
                         <TodoAppBar/>
                         <div className='BoardTileBar'>

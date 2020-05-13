@@ -210,3 +210,32 @@ body {
    bottom: 0;
    left: 0;
 }
+
+.LogIn {
+   position: relative;
+   background-color: skyblue;
+   height: 700px;
+}
+
+.AboutImg {
+   width: 582px;
+   position: absolute;
+   right: 110px;
+   top: 80px;
+}
+
+.About {
+   width: 35%;
+   margin-left: 110px;
+   margin-top: 60px;
+}
+
+.About h1 {
+   font-size: 48px;
+   color: white;
+}
+
+.About p {
+   font-size: 25px;
+   color: white;
+}
