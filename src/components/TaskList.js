@@ -5,7 +5,6 @@ import CardCreator from "./CardCreator";
 import { connect } from "react-redux";
 import {fetchCards,deleteCards} from "../actions";
 import { Droppable } from "react-beautiful-dnd";
-import {Trash} from "./Trash";
 
 function TaskList(props) {
     useEffect(() => {

@@ -1,6 +1,5 @@
 .App-page {
    position: relative;
-
 }
 
 .TaskList {
@@ -10,7 +9,6 @@
    padding-bottom: 7px;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    background-color: skyblue;
-
 }
 
 .TaskListTitle {
@@ -23,7 +21,6 @@
    font-weight: 700;
    text-align: center;
    font-family: 'Roboto', sans-serif;
-
 }
 
 .Card {
@@ -59,11 +56,6 @@ hr {
 
 .AddCard {
    display: flex;
-}
-
-
-body {
-
 }
 
 .TextField {
@@ -156,9 +148,6 @@ body {
    display: flex;
    flex-wrap: wrap;
    margin: auto;
-
-
-
 }
 
 .BoardTile:hover {
@@ -233,9 +222,11 @@ body {
 .About h1 {
    font-size: 48px;
    color: white;
+   font-family: 'Roboto', sans-serif;
 }
 
 .About p {
    font-size: 25px;
    color: white;
+   font-family: 'Roboto', sans-serif;
 }

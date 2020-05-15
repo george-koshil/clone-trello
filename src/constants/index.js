@@ -1,4 +1,4 @@
-export const TOKEN = '420706c4951573771e3b8f2458c9682e3eda62573b85c4f6b7f2ebde87a6b07a';
+export let TOKEN = localStorage.getItem('token');
 
 export const RECEIVE_BOARD = 'RECEIVE BOARD';
 
@@ -29,4 +29,6 @@ export const API_VERSION = '1';
 export const API_KEY = '1cfea9d7d56775b6eeaa0aec53d44336';
 
 export const AUTH = `key=${API_KEY}&token=${TOKEN}`;
+
+export const AUTH_URL = ` https://trello.com/1/authorize?expiration=1day&name=CloneTrello&scope=read,write,account&response_type=token&key=${API_KEY}&return_url=http://localhost:3000/login`;
 

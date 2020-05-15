@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import {Link} from "react-router-dom";
+import {AUTH_URL} from "../constants";
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,12 +27,18 @@ function TodoAppBar() {
     const classes = useStyles();
     return(
         <div className={classes.root}>
-            <AppBar position="static" style={{backgroundColor: 'rgb(25, 118, 210)'}}>
+            <AppBar position="static" style={{backgroundColor: "rgb(25, 118, 210)"}}>
                 <Toolbar>
 
-                    <Link to={'/'}>
+                    <Link to='/'>
                         <IconButton edge="start" className={classes.menuButton} aria-label="menu">
                             <HomeIcon/>
+                        </IconButton>
+                    </Link>
+
+                    <Link to='/boards'>
+                        <IconButton edge="start" className={classes.menuButton} aria-label="menu">
+                            <LibraryBooksIcon edge="start" className={classes.menuButton} />
                         </IconButton>
                     </Link>
 
@@ -38,7 +46,13 @@ function TodoAppBar() {
                         Clone Trello
                     </Typography>
 
-                    <Button color="inherit">Login</Button>
+                    <Button
+                        color="inherit"
+                        onClick={() => window.location = AUTH_URL}
+                        >
+                        Login
+                    </Button>
+
                 </Toolbar>
             </AppBar>
         </div>

@@ -1,60 +1,38 @@
-import React, { Component } from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import Board from "./components/Board";
 import {connect} from "react-redux";
-import BoardCreator from "./components/BoardCreator";
-import TodoAppBar from "./components/TodoAppBar";
-import BoardTile from "./components/BoardTile";
 import {fetchBoards} from "./actions";
 import {
     BrowserRouter as Router,
         Switch,
-        Route,
-        Link
+        Route
 } from "react-router-dom";
 import LogIn from "./components/LogIn";
+import HomePage from "./components/HomePage";
+import BoardsPage from "./components/BoardsPage";
+import BoardsRoutes from "./components/BoardsRoutes";
 
-class App extends Component {
-    componentDidMount() {
-        this.props.dispatch(fetchBoards());
-    }
-
-    render() {
+function App(props) {
+    useEffect(() =>  props.dispatch(fetchBoards()), []);
     return (
         <Router>
                 <Switch>
-                    {this.props.boards.map(board => {
-                        return(
-                            <Route key={'route' + board.id} path={'/' + board.id.toString()}>
-                                <Board key={'board' + board.id} board={board} />
-                            </Route>
-                            )
-
-                    })}
-
                     <Route exact path='/' >
+                        <HomePage/>
+                    </Route>
+
+                    <Route exact path='/login'>
                         <LogIn/>
                     </Route>
 
-                <Route path='/boards'>
-                    <div className='App-page'>
-                        <TodoAppBar/>
-                        <div className='BoardTileBar'>
-                            {this.props.boards.map(board => {
-                                return(
-                                    <Link key={'link' + board.id} to={'/' + board.id.toString()}>
-                                        <BoardTile key={board.id} name={board.name} />
-                                    </Link>
-                                )
-                            })}
-                            <BoardCreator/>
-                        </div>
-                    </div>
-                </Route>
+                    <Route path='/boards'>
+                        <BoardsPage boards={props.boards}/>
+                    </Route>
+
+                    <BoardsRoutes boards={props.boards}/>
                 </Switch>
         </Router>
     );
-  }
 }
 
 const mapStateToProps = state => ({

@@ -6,7 +6,7 @@ import {fetchLists, dragCard, getPos, deleteCard} from "../actions";
 import {connect} from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd"
 import store from "../store";
-import {Trash} from "./Trash";
+import {LogIn} from "./LogIn";
 
 function Board(props) {
     useEffect(() => props.dispatch(fetchLists(props.board.id)), []);

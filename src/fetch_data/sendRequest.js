@@ -30,3 +30,12 @@ export  const sendRequest = (path, init) => {
         return response.json();
     });
 };
+
+export function getToken(url) {
+    return url.slice(34, url.length)
+}
+
+export function logIn() {
+    localStorage.setItem('token', getToken(window.location.href));
+    window.location = 'http://localhost:3000/boards';
+}
