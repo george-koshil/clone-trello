@@ -8,9 +8,25 @@ import {
     REQUEST_BOARDS,
     REQUEST_LISTS,
     REQUEST_CARDS,
-    DELETE_CARDS, DELETE_CARD, AUTH
+    DELETE_CARDS,
+    DELETE_CARD,
+    AUTH,
+    LOG_IN,
+    LOG_OUT
 } from "../constants";
 import {sendRequest} from "../fetch_data/sendRequest";
+
+export function logIn() {
+    return {
+        type: LOG_IN
+    }
+}
+
+export function logOut() {
+    return {
+        type: LOG_OUT
+    }
+}
 
 export function receiveBoard(board) {
     return {

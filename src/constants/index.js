@@ -22,6 +22,10 @@ export const DELETE_CARDS = 'DELETE CARDS';
 
 export const DELETE_CARD = 'DELETE CARD';
 
+export const LOG_IN = 'LOG IN';
+
+export const LOG_OUT = 'LOG OUT';
+
 export const API_BASE_URL = 'https://api.trello.com';
 
 export const API_VERSION = '1';
