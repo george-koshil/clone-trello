@@ -3,43 +3,46 @@ import Card from "./Card";
 import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
 import { connect } from "react-redux";
-import {fetchCards,deleteCards} from "../actions";
+import {fetchCards, deleteCards} from "../actions";
 import { Droppable } from "react-beautiful-dnd";
 
 function TaskList(props) {
-    useEffect(() => {
-        props.dispatch(fetchCards(props.idList));
-        return () => props.dispatch(deleteCards())
-    },[]);
+    const { dispatch, idList, cards, listIndex, name} = props;
 
-    let cards = null;
-    if(props.cards[props.idList]) {
-        cards = props.cards[props.idList].map((card, index) => {
+    useEffect(() => {
+        dispatch(fetchCards(idList));
+        return () => dispatch(deleteCards())
+    },[dispatch, idList]);
+
+    let listCards = null;
+    if(cards[idList]) {
+        listCards = cards[idList].map((card, index) => {
                 return <Card
                     name={card.name}
-                    key={index}
+                    key={card.id}
                     id={card.id}
                     index={index}
-                    listIndex={props.listIndex}
+                    listIndex={listIndex}
+                    idList={idList}
                 />
         })
     }
 
     return(
         <div className='TaskList'>
-            <TaskListTitle title={props.name}/>
+            <TaskListTitle title={name}/>
             <hr />
 
-            <Droppable droppableId={props.idList}>
+            <Droppable droppableId={idList}>
                 {provided => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {cards}
+                        {listCards}
                         {provided.placeholder}
                     </div>
                 )}
             </Droppable>
 
-            <CardCreator idList={props.idList}/>
+            <CardCreator idList={idList}/>
         </div>
     )
 }

@@ -1,9 +1,19 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+import DeleteItem from "./DeleteItem";
+import {deleteCard} from "../actions";
+import {connect} from "react-redux";
+
 
 function Card(props) {
+    const { id, index, listIndex, idList, name, deleteCard } = props;
+
+    function deleteTask() {
+        deleteCard(id, idList);
+    }
+
     return(
-        <Draggable draggableId={`${props.id}.${props.index}.${props.listIndex}`} index={props.index}>
+        <Draggable draggableId={`${id}.${index}.${listIndex}`} index={index}>
             {provided => (
                 <div
                     className='Card'
@@ -11,11 +21,20 @@ function Card(props) {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
-                    {props.name}
+                    {name}
+
+                    <DeleteItem
+                        className='DeleteCard'
+                        handler={deleteTask}
+                    />
                 </div>
             )}
         </Draggable>
     )
 }
 
-export default Card
+const mapDispatchToProps = {
+    deleteCard
+};
+
+export default connect(null,mapDispatchToProps)(Card)

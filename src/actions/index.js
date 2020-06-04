@@ -10,11 +10,10 @@ import {
     REQUEST_CARDS,
     DELETE_CARDS,
     DELETE_CARD,
-    AUTH,
     LOG_IN,
-    LOG_OUT
+    LOG_OUT, DELETE_BOARD, DELETE_LIST
 } from "../constants";
-import {sendRequest} from "../fetch_data/sendRequest";
+import {Auth, sendRequest} from "../fetch_data/sendRequest";
 
 export function logIn() {
     return {
@@ -192,7 +191,7 @@ export function deleteCard(idCard, idList) {
     return dispatch => {
         dispatch(deleteLocalCard(idCard, idList));
 
-        sendRequest(`/cards/${idCard}?${AUTH}`, {
+        sendRequest(`/cards/${idCard}?${Auth(localStorage.getItem('token'))}`, {
             method: 'DELETE'
         })
             .then(res => console.log(res))
@@ -212,7 +211,6 @@ export function dragCard(sourceCards, destinationCards, sourceIdList, destinatio
         }
         dispatch(receiveCards(sourceCards, sourceIdList));
 
-        console.log(prevSourceList)
         sendRequest(`/cards/${card.id}`, {
             method: 'PUT',
             params: {

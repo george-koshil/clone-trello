@@ -9,7 +9,9 @@ import store from "../store";
 import {LogIn} from "./LogIn";
 
 function Board(props) {
-    useEffect(() => props.dispatch(fetchLists(props.board.id)), []);
+    const { dispatch, lists, board, isLoggedIn } = props;
+    useEffect(() => dispatch(fetchLists(board.id)), []);
+
     const onDragEnd = (result) => {
         const {source, destination} = result;
 
@@ -19,12 +21,6 @@ function Board(props) {
         }
 
         if(!destination) {
-            return;
-        }
-
-        if(destination.droppableId === 'Trash') {
-            const card = {...props.cards[source.droppableId][source.index]};
-            props.dispatch(deleteCard(card.id, source.droppableId));
             return;
         }
 
@@ -50,14 +46,14 @@ function Board(props) {
             destinationList.splice(destination.index, 0, card);
             props.dispatch(dragCard(sourceList, destinationList, source.droppableId, destination.droppableId, card, destination.index, prevSourceList, prevDestinationList));
         }
-    }
+    };
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-                <TodoAppBar/>
+                <TodoAppBar isLoggedIn={isLoggedIn}/>
                     <div className='Board'>
-                        {props.lists.map((list, index) => {
-                           if(list.idBoard === props.board.id) {
+                        {lists.map((list, index) => {
+                           if(list.idBoard === board.id) {
                                 return <TaskList
                                    key={index}
                                    name={list.name}
@@ -67,7 +63,7 @@ function Board(props) {
                                />
                            }
                         })}
-                        <AddListButton idBoard={props.board.id}/>
+                        <AddListButton idBoard={board.id}/>
                     </div>
         </DragDropContext>
     )
@@ -76,7 +72,8 @@ function Board(props) {
 const mapStateToProps = store => {
     return {
         lists: store.list.items,
-        cards:store.card.items
+        cards:store.card.items,
+        isLoggedIn: store.login.isLoggedIn
     }
 };
 

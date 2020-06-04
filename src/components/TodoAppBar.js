@@ -6,9 +6,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Link} from "react-router-dom";
 import {AUTH_URL} from "../constants";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import {connect} from "react-redux";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -23,8 +25,14 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function TodoAppBar() {
+function TodoAppBar(props) {
+    const { isLoggedIn } = props;
     const classes = useStyles();
+
+    function redirectToAuthPage() {
+        window.location = AUTH_URL;
+    }
+
     return(
         <div className={classes.root}>
             <AppBar position="static" style={{backgroundColor: "rgb(25, 118, 210)"}}>
@@ -36,22 +44,29 @@ function TodoAppBar() {
                         </IconButton>
                     </Link>
 
+                    {isLoggedIn &&
                     <Link to='/boards'>
                         <IconButton edge="start" className={classes.menuButton} aria-label="menu">
                             <LibraryBooksIcon edge="start" className={classes.menuButton} />
                         </IconButton>
                     </Link>
+                    }
 
                     <Typography variant="h6" className={classes.title}>
                         Clone Trello
                     </Typography>
 
-                    <Button
-                        color="inherit"
-                        onClick={() => window.location = AUTH_URL}
+                    {isLoggedIn
+                        ?
+                        <AccountCircle />
+                        :
+                        <Button
+                            color="inherit"
+                            onClick={redirectToAuthPage}
                         >
-                        Login
-                    </Button>
+                            Login
+                        </Button>
+                    }
 
                 </Toolbar>
             </AppBar>
@@ -59,4 +74,10 @@ function TodoAppBar() {
     )
 }
 
-export default TodoAppBar;
+const mapStateToProps = store => {
+    return {
+        isLogin: store.login.isLogin
+    }
+};
+
+export default connect(mapStateToProps)(TodoAppBar)

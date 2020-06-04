@@ -1,6 +1,7 @@
 import React from "react";
 
-function TaskListTitle({title}) {
+function TaskListTitle(props) {
+    const { title } = props;
     return(
         <div className='TaskListTitle'>{title}</div>
     )

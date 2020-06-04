@@ -1,10 +1,12 @@
 import React from "react";
 import TodoAppBar from "./TodoAppBar";
+import {connect} from "react-redux";
 
-export default function HomePage() {
+function HomePage(props) {
+    const { isLoggedIn } = props;
     return(
         <div className='LogIn'>
-            <TodoAppBar/>
+            <TodoAppBar isLoggedIn={isLoggedIn}/>
             <div className='AboutImg'>
                 <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/308998dcb3ed5ab3d01217a4d24ffa03/hero-a.svg" alt="Trello"/>
             </div>
@@ -16,3 +18,9 @@ export default function HomePage() {
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    isLoggedIn: state.login.isLoggedIn
+});
+
+export default connect(mapStateToProps)(HomePage);

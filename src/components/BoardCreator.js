@@ -5,8 +5,27 @@ import { connect } from "react-redux";
 import {createBoard} from "../actions";
 
 function BoardCreator(props) {
+    const { createBoard } = props;
     let [onBoardCreator, setOnBoardCreator] = useState(false);
     let [boardName, setBoardName] = useState('');
+
+    function openBoardCreator() {
+        setOnBoardCreator(true);
+    }
+
+    function closeBoardCreator() {
+        setOnBoardCreator(true);
+    }
+
+    function setName(e) {
+        setBoardName(e.target.value);
+    }
+
+    function addNewBoard() {
+        createBoard(boardName);
+        setBoardName('');
+        setOnBoardCreator(false);
+    }
 
     if(onBoardCreator) {
         return(
@@ -22,7 +41,7 @@ function BoardCreator(props) {
                       fullWidth={true}
                       size='medium'
                       autoFocus={true}
-                      onChange={(e) => setBoardName(e.target.value)}
+                      onChange={setName}
                   />
               </div>
 
@@ -30,12 +49,7 @@ function BoardCreator(props) {
                   <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => {
-                          props.createBoard(boardName);
-                          setBoardName('');
-                          setOnBoardCreator(false);
-                      }
-                      }
+                      onClick={addNewBoard}
                   >
                       Добавить
                   </Button>
@@ -45,7 +59,7 @@ function BoardCreator(props) {
                   <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => setOnBoardCreator(false)}
+                      onClick={closeBoardCreator}
                   >
                       Отменить
                   </Button>
@@ -54,7 +68,7 @@ function BoardCreator(props) {
         );
     }
     return(
-      <div className='BoardCreator' onClick={() => setOnBoardCreator(true)}>
+      <div className='BoardCreator' onClick={openBoardCreator}>
           <div className='BoardCreatorTitle'>Создать доску</div>
       </div>
     );

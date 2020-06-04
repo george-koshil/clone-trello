@@ -1,18 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import TodoAppBar from "./TodoAppBar";
 import {Link} from "react-router-dom";
 import BoardTile from "./BoardTile";
 import BoardCreator from "./BoardCreator";
+import {connect} from "react-redux";
+import {fetchBoards} from "../actions";
 
-export default function BoardsPage(props) {
+
+function BoardsPage(props) {
+    const { dispatch, boards, isLoggedIn} = props;
+
+    useEffect(() =>  {
+        dispatch(fetchBoards())
+    }, [dispatch]);
+
     return(
         <div className='App-page'>
-            <TodoAppBar/>
+            <TodoAppBar isLoggedIn={isLoggedIn}/>
             <div className='BoardTileBar'>
-                {props.boards.map(board => {
+                {boards.map(board => {
                     return(
-                        <Link key={'link' + board.id} to={'/' + board.id}>
-                            <BoardTile key={board.id} name={board.name} />
+                        <Link key={board.id} to={'/' + board.id}>
+                            <BoardTile  name={board.name} idBoard={board.id}/>
                         </Link>
                     )
                 })}
@@ -21,3 +30,10 @@ export default function BoardsPage(props) {
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    boards: state.board.items,
+    isLoggedIn: state.login.isLoggedIn
+});
+
+export default connect(mapStateToProps)(BoardsPage);

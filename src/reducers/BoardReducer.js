@@ -1,4 +1,4 @@
-import {RECEIVE_BOARD, RECEIVE_BOARDS, REQUEST_BOARDS} from "../constants";
+import {DELETE_BOARD, RECEIVE_BOARD, RECEIVE_BOARDS, REQUEST_BOARDS} from "../constants";
 
 const initialState = {
     isFetching: false,
@@ -23,6 +23,13 @@ export default function BoardReducer(state = initialState, action) {
                 ...state,
                 isFetching: false,
                 items: action.boards
+            };
+        case DELETE_BOARD:
+            return {
+                ...state,
+                items:  [...state.items.filter(board => {
+                    return board.id !== action.idBoard
+                })]
             };
         default:
             return state

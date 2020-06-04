@@ -7,10 +7,29 @@ import {createList} from "../actions";
 import { connect } from "react-redux";
 
 function AddListButton(props) {
-    const [onAddList, setOnAddList] = useState(false);
+    const { createList, idBoard } = props;
+    const [isAddList, setIsAddList] = useState(false);
     const [listName, setListName] = useState('');
 
-    if(onAddList) {
+    function setName(e) {
+        setListName(e.target.value);
+    }
+
+    function addNewList() {
+        createList(listName, idBoard);
+        setIsAddList(false);
+        setListName('');
+    }
+
+    function openAddListBar() {
+        setIsAddList(true);
+    }
+
+    function closeAddListBar() {
+        setIsAddList(false);
+    }
+
+    if(isAddList) {
         return(
             <div className='AddList'>
                 <div className='TextField'>
@@ -22,7 +41,7 @@ function AddListButton(props) {
                         fullWidth={true}
                         size='small'
                         autoFocus={true}
-                        onChange={(e) => setListName(e.target.value)}
+                        onChange={setName}
                     />
                 </div>
 
@@ -32,21 +51,14 @@ function AddListButton(props) {
                         color="primary"
                         size='small'
                         startIcon={<AddIcon/>}
-                        onClick={() => {
-                            props.createList(listName, props.idBoard);
-                            setOnAddList(false);
-                            setListName('');
-                        }
-                        }
+                        onClick={addNewList}
                     >
                         Добавить колонку
                     </Button>
-                    <div onClick={()=> setOnAddList(false)}>
+                    <div onClick={closeAddListBar}>
                         <CloseIcon className='CloseButton' />
                     </div>
-
                 </div>
-
             </div>
 
         )
@@ -58,7 +70,7 @@ function AddListButton(props) {
               variant='contained'
               color="default"
               startIcon={<AddIcon />}
-              onClick={() => setOnAddList(true)}
+              onClick={openAddListBar}
           >
               Добавить колонку
           </Button>

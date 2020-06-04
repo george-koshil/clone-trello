@@ -6,12 +6,29 @@ import AddIcon from '@material-ui/icons/Add';
 import {createCard} from "../actions";
 import { connect } from "react-redux";
 
-
 function CardCreator(props) {
-    let [onCardInput, setOnCardInput] = useState(false);
+    let { idList } = props;
+    let [isCardInput, setOnCardInput] = useState(false);
     let [cardName, setCardName] = useState('');
 
-    if(onCardInput) {
+    function closeInputBar() {
+        setOnCardInput(false);
+    }
+
+    function openInputBar() {
+        setOnCardInput(true);
+    }
+
+    function createCard() {
+        props.createCard(cardName, idList);
+        setCardName('');
+    }
+
+    function inputName(e) {
+        setCardName(e.target.value);
+    }
+
+    if(isCardInput) {
         return(
             <div className='CardCreator'>
                 <div className='TextField'>
@@ -23,7 +40,7 @@ function CardCreator(props) {
                         fullWidth={true}
                         size='small'
                         autoFocus={true}
-                        onChange={(e) => setCardName(e.target.value)}
+                        onChange={inputName}
                     />
                 </div>
 
@@ -33,20 +50,14 @@ function CardCreator(props) {
                         color="primary"
                         size='small'
                         startIcon={<AddIcon/>}
-                        onClick={() => {
-                            props.createCard(cardName, props.idList);
-                            setCardName('');
-                        }
-                        }
+                        onClick={createCard}
                     >
                         Добавить карточку
                     </Button>
-                    <div onClick={()=> setOnCardInput(false)}>
+                    <div onClick={closeInputBar}>
                         <CloseIcon className='CloseButton' />
                     </div>
-
                 </div>
-
             </div>
 
         )
@@ -57,7 +68,7 @@ function CardCreator(props) {
                 size='medium'
                 startIcon={<AddIcon />}
                 fullWidth={true}
-                onClick={() => setOnCardInput(true)}
+                onClick={openInputBar}
             >
                     Добавить карточку
                 </Button>

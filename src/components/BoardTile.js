@@ -1,6 +1,7 @@
 import React from "react";
 
-function BoardTile({name}) {
+export default function BoardTile(props) {
+    const { name } = props;
     return(
         <div className='BoardTile'>
             <div className='BoardTileTitle'>
@@ -9,5 +10,3 @@ function BoardTile({name}) {
         </div>
     )
 }
-
-export default BoardTile

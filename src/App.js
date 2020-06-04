@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import {connect} from "react-redux";
-import {fetchBoards} from "./actions";
 import {
     BrowserRouter as Router,
         Switch,
@@ -12,8 +10,7 @@ import HomePage from "./components/HomePage";
 import BoardsPage from "./components/BoardsPage";
 import BoardsRoutes from "./components/BoardsRoutes";
 
-function App(props) {
-    useEffect(() =>  props.dispatch(fetchBoards()), []);
+function App() {
     return (
         <Router>
                 <Switch>
@@ -26,19 +23,15 @@ function App(props) {
                     </Route>
 
                     <Route path='/boards'>
-                        <BoardsPage boards={props.boards}/>
+                        <BoardsPage />
                     </Route>
 
-                    <BoardsRoutes boards={props.boards}/>
+                    <BoardsRoutes/>
                 </Switch>
         </Router>
     );
 }
 
-const mapStateToProps = state => ({
-    boards: state.board.items
-});
-
-export default connect(mapStateToProps)(App);
+export default App
 
 
