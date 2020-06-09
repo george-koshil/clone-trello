@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import DeleteItem from "./DeleteItem";
-import {deleteCard} from "../actions";
+import {deleteCard} from "../store/actions";
 import {connect} from "react-redux";
 
 

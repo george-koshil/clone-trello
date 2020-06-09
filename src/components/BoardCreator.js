@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
 import { connect } from "react-redux";
-import {createBoard} from "../actions";
+import {createBoard} from "../store/actions";
 
 function BoardCreator(props) {
     const { createBoard } = props;

@@ -14,7 +14,7 @@ function BoardsRoutes(props) {
 }
 
 const mapStateToProps = state => ({
-    boards: state.board.items,
+    boards: state.board.items
 });
 
 export default connect(mapStateToProps)(BoardsRoutes)

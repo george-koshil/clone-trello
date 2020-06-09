@@ -2,7 +2,7 @@ import TaskList from "./TaskList";
 import TodoAppBar from "./TodoAppBar";
 import AddListButton from "./AddListButton";
 import React, {useEffect} from "react";
-import {fetchLists, dragCard, getPos, deleteCard} from "../actions";
+import {fetchLists, dragCard, getPos, deleteCard} from "../store/actions";
 import {connect} from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd"
 import store from "../store";

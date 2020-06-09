@@ -11,9 +11,9 @@ import {
     DELETE_CARDS,
     DELETE_CARD,
     LOG_IN,
-    LOG_OUT, DELETE_BOARD, DELETE_LIST
+    LOG_OUT
 } from "../constants";
-import {Auth, sendRequest} from "../fetch_data/sendRequest";
+import {sendRequest} from "../../fetch_data/sendRequest";
 
 export function logIn() {
     return {
@@ -30,14 +30,14 @@ export function logOut() {
 export function receiveBoard(board) {
     return {
         type: RECEIVE_BOARD,
-        board
+        payload: { board }
     }
 }
 
 export function receiveBoards(boards) {
     return {
         type: RECEIVE_BOARDS,
-        boards
+        payload: { boards }
     }
 }
 
@@ -50,14 +50,14 @@ export function requestBoards() {
 export function receiveList(list) {
     return {
         type: RECEIVE_LIST,
-        list
+        payload: { list }
     }
 }
 
 export function receiveLists(lists) {
     return {
         type: RECEIVE_LISTS,
-        lists
+        payload: { lists }
     }
 }
 
@@ -70,16 +70,20 @@ export function requestLists() {
 export function receiveCard(card, idList) {
     return {
         type: RECEIVE_CARD,
-        card,
-        idList
+        payload: {
+            card,
+            idList
+        }
     }
 }
 
 export function receiveCards(cards,idList) {
     return {
         type: RECEIVE_CARDS,
-        cards,
-        idList
+        payload: {
+            cards,
+            idList
+        }
     }
 }
 
@@ -98,8 +102,10 @@ export function deleteCards() {
 export function deleteLocalCard(idCard, idList) {
     return {
         type: DELETE_CARD,
-        idCard,
-        idList
+        meta: {
+            idCard,
+            idList
+        }
     }
 }
 
@@ -191,7 +197,7 @@ export function deleteCard(idCard, idList) {
     return dispatch => {
         dispatch(deleteLocalCard(idCard, idList));
 
-        sendRequest(`/cards/${idCard}?${Auth(localStorage.getItem('token'))}`, {
+        sendRequest(`/cards/${idCard}`, {
             method: 'DELETE'
         })
             .then(res => console.log(res))

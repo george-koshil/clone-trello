@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import BoardTile from "./BoardTile";
 import BoardCreator from "./BoardCreator";
 import {connect} from "react-redux";
-import {fetchBoards} from "../actions";
+import {fetchBoards} from "../store/actions";
 
 
 function BoardsPage(props) {

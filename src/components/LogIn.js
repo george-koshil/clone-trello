@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {saveToken} from "../fetch_data/sendRequest";
 import {connect} from "react-redux";
-import {logIn} from "../actions";
+import {logIn} from "../store/actions";
 import { useHistory } from "react-router-dom";
 
 function LogIn(props) {

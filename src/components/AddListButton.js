@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import CloseIcon from "@material-ui/icons/Close";
-import {createList} from "../actions";
+import {createList} from "../store/actions";
 import { connect } from "react-redux";
 
 function AddListButton(props) {

@@ -3,7 +3,7 @@ import Card from "./Card";
 import TaskListTitle from "./TaskListTitle";
 import CardCreator from "./CardCreator";
 import { connect } from "react-redux";
-import {fetchCards, deleteCards} from "../actions";
+import {fetchCards, deleteCards} from "../store/actions";
 import { Droppable } from "react-beautiful-dnd";
 
 function TaskList(props) {

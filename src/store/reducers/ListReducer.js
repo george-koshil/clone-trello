@@ -1,4 +1,4 @@
-import {RECEIVE_LIST, RECEIVE_LISTS, REQUEST_LISTS, DELETE_LIST} from "../constants";
+import {RECEIVE_LIST, RECEIVE_LISTS, REQUEST_LISTS} from "../constants";
 
 const initialState = {
     isFetching: false,
@@ -16,20 +16,13 @@ export default function ListReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
-                items: [...state.items, action.list]
+                items: [...state.items, action.payload.list]
             };
         case RECEIVE_LISTS:
             return {
                 ...state,
                 isFetching: false,
-                items: action.lists
-            };
-        case DELETE_LIST:
-            return {
-                ...state,
-                items:  [...state.items.filter(list => {
-                    return list.id !== action.idList
-                })]
+                items: action.payload.lists
             };
         default:
             return state

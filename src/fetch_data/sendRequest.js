@@ -1,4 +1,4 @@
-import {API_BASE_URL, API_VERSION, API_KEY} from "../constants";
+import {API_BASE_URL, API_VERSION, API_KEY} from './constants'
 
     const transformToQueryString = params =>
         Object.keys(params)
@@ -12,16 +12,13 @@ import {API_BASE_URL, API_VERSION, API_KEY} from "../constants";
 
 
     export  const sendRequest = (path, init) => {
-
-        let url = `${API_BASE_URL}/${API_VERSION}${path}`;
+        let url = `${API_BASE_URL}/${API_VERSION}${path}?${auth()}`;
         if (init) {
             const { params } = init;
             if (params) {
-                url = `${url}?${transformToQueryString(params)}&${Auth(localStorage.getItem('token'))}`;
+                url = `${url}&${transformToQueryString(params)}`;
             }
         }
-        else url = `${url}?${Auth(localStorage.getItem('token'))}`;
-
         return fetch(url, init).then(response => {
             if (!response.ok) {
                 throw new Error(response.statusText);
@@ -31,8 +28,8 @@ import {API_BASE_URL, API_VERSION, API_KEY} from "../constants";
         });
     };
 
-    export function Auth(token) {
-        return `key=${API_KEY}&token=${token}`;
+    export function auth() {
+        return `key=${API_KEY}&token=${localStorage.getItem('token')}`;
     }
 
     export function getToken(url) {
@@ -41,6 +38,5 @@ import {API_BASE_URL, API_VERSION, API_KEY} from "../constants";
 
     export function saveToken() {
         localStorage.setItem('token', getToken(window.location.href));
-        localStorage.setItem('isLogin', 'true');
     }
 

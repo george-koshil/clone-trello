@@ -11,7 +11,7 @@ export default function CardReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
-                items: {...state.items, [action.idList]: action.cards}
+                items: {...state.items, [action.payload.idList]: action.payload.cards}
             };
         case REQUEST_CARDS:
             return {
@@ -22,7 +22,7 @@ export default function CardReducer(state = initialState, action) {
             return {
               ...state,
               isFetching: false,
-              items: {...state.items, [action.idList]:[...state.items[action.idList], action.card]}
+              items: {...state.items, [action.payload.idList]:[...state.items[action.payload.idList], action.payload.card]}
             };
         case DELETE_CARDS:
             return {
@@ -33,9 +33,9 @@ export default function CardReducer(state = initialState, action) {
             return {
                 ...state,
                 items: {...state.items,
-                    [action.idList]: [...state.items[action.idList].filter(card => {
-                        return card.id !== action.idCard
-                    })]}
+                    [action.meta.idList]: state.items[action.meta.idList].filter(card => {
+                        return card.id !== action.meta.idCard
+                    })}
             };
         default:
             return state

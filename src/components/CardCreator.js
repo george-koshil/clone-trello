@@ -3,11 +3,11 @@ import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
-import {createCard} from "../actions";
+import {createCard} from "../store/actions";
 import { connect } from "react-redux";
 
 function CardCreator(props) {
-    let { idList } = props;
+    const { idList } = props;
     let [isCardInput, setOnCardInput] = useState(false);
     let [cardName, setCardName] = useState('');
 
