@@ -1,269 +1,272 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
 .App-page {
-   position: relative;
+  position: relative;
 }
 
 .TaskList {
-   position: relative;
-   margin: 20px;
-   width: 250px;
-   height: 100%;
-   padding-bottom: 7px;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: skyblue;
+  position: relative;
+  margin: 20px;
+  width: 250px;
+  height: 100%;
+  padding-bottom: 7px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: skyblue;
 }
 
 .DeleteTaskList {
-   position: absolute;
-   top: 5px;
-   right: 5px;
-   opacity: 0;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
 }
 
 .DeleteTaskList:hover {
-   opacity: 1;
+  opacity: 1;
 }
 
 .TaskListTitle {
-   color: #333;
-   margin-left: 5px;
-   margin-right: 5px;
-   padding-top: 15px;
-   padding-bottom: 5px;
-   font-size: 24px;
-   font-weight: 700;
-   text-align: center;
-   font-family: 'Roboto', sans-serif;
+  color: #333;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
 .Card {
-   position: relative;
-   width: 221px;
-   background-color: white;
-   margin-top: 8px;
-   margin-left: 7px;
-   border-radius: 4px;
-   box-shadow: rgba(0, 0, 0, 0.16) 0 3px 3px, rgba(0, 0, 0, 0.23) 0 3px 3px;
-   text-align: left;
-   padding-top: 9px;
-   padding-bottom: 9px;
-   padding-left: 12px;
-   padding-right: 5px;
-   font-family: 'Roboto', sans-serif;
+  position: relative;
+  width: 221px;
+  background-color: white;
+  margin-top: 8px;
+  margin-left: 7px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 3px, rgba(0, 0, 0, 0.23) 0 3px 3px;
+  text-align: left;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 12px;
+  padding-right: 5px;
+  font-family: "Roboto", sans-serif;
 }
 
 .Card:hover .DeleteCard {
-   opacity: 1;
+  opacity: 1;
 }
 
 .DeleteCard {
-   position: absolute;
-   top: 5px;
-   right: 5px;
-   opacity: 0;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
 }
 
 hr {
-   height: 1px;
-   width: 236px;
-   margin-left: 7px;
-   margin-right: 7px;
-   opacity: 0.25;
+  height: 1px;
+  width: 236px;
+  margin-left: 7px;
+  margin-right: 7px;
+  opacity: 0.25;
 }
 
 .CloseButton {
-   padding: 2px;
-   margin-left: 3px;
-   margin-top: 3px;
-   cursor: pointer;
+  padding: 2px;
+  margin-left: 3px;
+  margin-top: 3px;
+  cursor: pointer;
 }
 
 .AddCard {
-   display: flex;
+  display: flex;
 }
 
 .TextField {
-   margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .CardCreator {
-   width: 236px;
-   margin-left: 7px;
-   margin-top: 8px;
+  width: 236px;
+  margin-left: 7px;
+  margin-top: 8px;
 }
 
 .AddList {
-   background-color: rgb(202, 255, 222);
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   padding: 5px;
-   height: 100%;
-   width: 236px;
-   margin-left: 7px;
-   margin-top: 20px;
+  background-color: rgb(202, 255, 222);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 5px;
+  height: 100%;
+  width: 236px;
+  margin-left: 7px;
+  margin-top: 20px;
 }
 .Board {
-   position: relative;
-   display: flex;
+  position: relative;
+  display: flex;
 }
 
-
-
 .BoardCreator {
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: rgba(9, 30, 66, 0.04);
-   margin-top: 30px;
-   margin-left: 30px;
-   width: 200px;
-   height: 120px;
-   position: relative;
-   cursor: pointer;
-   transition: 400ms;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: rgba(9, 30, 66, 0.04);
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 200px;
+  height: 120px;
+  position: relative;
+  cursor: pointer;
+  transition: 400ms;
 }
 
 .BoardCreator:hover {
-   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-   transform: scale(1.10);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform: scale(1.1);
 }
 
 .BoardCreatorTitle {
-   width: 130px;
-   position: absolute;
-   top: 48px;
-   left: 45px;
-   font-weight: bold;
-   font-family: 'Roboto', sans-serif;
-   color: darkgrey;
+  width: 130px;
+  position: absolute;
+  top: 48px;
+  left: 45px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  color: darkgrey;
 }
 
 .BoardCreatorTextField {
-   position: absolute;
-   top: 52px;
-   left: 23px;
-   background-color: white;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   border-radius: 5px;
+  position: absolute;
+  top: 52px;
+  left: 23px;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
 }
 
 .BoardCreatorButton {
-   position: absolute;
-   bottom: 20px;
-   right: 22px;
+  position: absolute;
+  bottom: 20px;
+  right: 22px;
 }
 
 .BoardCreatorButtonClose {
-   position: absolute;
-   bottom: 20px;
-   left: 22px;
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
 }
 
 .BoardTile {
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: skyblue;
-   margin-top: 30px;
-   margin-left: 30px;
-   width: 200px;
-   height: 120px;
-   position: relative;
-   cursor: pointer;
-   transition: 400ms;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: skyblue;
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 200px;
+  height: 120px;
+  position: relative;
+  cursor: pointer;
+  transition: 400ms;
 }
 
 .DeleteBoard {
-   position: absolute;
-   top: 3px;
-   right: 3px;
-   opacity: 0;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  opacity: 0;
 }
 
-
 .BoardTileBar {
-   width: 1000px;
-   height: 100%;
-   display: flex;
-   flex-wrap: wrap;
-   margin: auto;
+  width: 1000px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
 }
 
 .BoardTile:hover {
-   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-   transform: scale(1.10);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform: scale(1.1);
 }
 
 .DeleteBoard:hover {
-   opacity: 1;
+  opacity: 1;
 }
 
 .BoardTileTitle {
-   width: 130px;
-   height: 100%;
-   position: absolute;
-   top: 48px;
-   left: 45px;
-   font-weight: bold;
-   font-family: 'Roboto', sans-serif;
-   color: white;
+  width: 130px;
+  height: 100%;
+  position: absolute;
+  top: 48px;
+  left: 45px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  color: white;
 }
 
 .FormBoardCreator {
-   width: 270px;
-   height: 180px;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   background-color: skyblue;
-   margin-top: 30px;
-   margin-left: 30px;
-   position: relative;
+  width: 270px;
+  height: 180px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: skyblue;
+  margin-top: 30px;
+  margin-left: 30px;
+  position: relative;
 }
 
 .FormBoardTitle {
-   position: absolute;
-   width: 230px;
-   font-size: 19px;
-   top: 15px;
-   left: 65px;
-   font-weight: bold;
-   font-family: 'Roboto', sans-serif;
-   color: white;
+  position: absolute;
+  width: 230px;
+  font-size: 19px;
+  top: 15px;
+  left: 65px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  color: white;
 }
 
 .AddListButton {
-   margin-top: 20px;
+  margin-top: 20px;
 }
 
 .Trash {
-   position: absolute;
-   text-align: center;
-   width: 250px;
-   height: 150px;
-   bottom: 0;
-   left: 0;
+  position: absolute;
+  text-align: center;
+  width: 250px;
+  height: 150px;
+  bottom: 0;
+  left: 0;
 }
 
 .LogIn {
-   position: relative;
-   background-color: skyblue;
-   height: 700px;
+  position: relative;
+  background-color: skyblue;
+  height: 700px;
 }
 
 .AboutImg {
-   width: 582px;
-   position: absolute;
-   right: 110px;
-   top: 80px;
+  width: 582px;
+  position: absolute;
+  right: 110px;
+  top: 80px;
 }
 
 .About {
-   width: 35%;
-   margin-left: 110px;
-   margin-top: 60px;
+  width: 35%;
+  margin-left: 110px;
+  margin-top: 60px;
 }
 
 .About h1 {
-   font-size: 48px;
-   color: white;
-   font-family: 'Roboto', sans-serif;
+  font-size: 48px;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .About p {
-   font-size: 25px;
-   color: white;
-   font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
